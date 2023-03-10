@@ -1,5 +1,6 @@
 package com.example.mefit.Services.Program;
 
+import com.example.mefit.Models.Goal;
 import com.example.mefit.Models.Program;
 import com.example.mefit.Models.Workout;
 import com.example.mefit.Repositories.ProgramRepository;
@@ -57,4 +58,10 @@ public class ProgramServiceImpl implements ProgramService{
     public Set<Workout> getWorkout(int Id) {
         return null;
     }
+
+    @Override
+    public Set<Goal> getGoal(int Id) {
+        return null;
+    }
+
 }

@@ -54,10 +54,7 @@ public class ProfileServiceImpl implements ProfileService{
         return false;
     }
 
-    @Override
-    public Program getProgram(int Id) {
-        return null;
-    }
+
 
     @Override
     public Goal getGoal(int Id) {
@@ -69,8 +66,5 @@ public class ProfileServiceImpl implements ProfileService{
         return null;
     }
 
-    @Override
-    public Workout getWorkout(int Id) {
-        return null;
-    }
+
 }

@@ -15,14 +15,16 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "exercise_id")
     private int id;
+    @Column(name = "profile_age")
+    private int age;
     @Column(name = "profile_weight")
     private int weight;
     @Column(name = "profile_height")
     private int height;
     @Column(name = "profile_medicalCondition")
-    List<String> medical_condition = new ArrayList<>();
+    private String medical_condition;
     @Column(name = "profile_disabilities")
-    List<String> disabilities = new ArrayList<>();
+    private String disabilities;
 
     @ManyToOne
     @JoinColumn(name="user_id")
@@ -32,12 +34,6 @@ public class Profile {
     @JoinColumn(name="goal_id")
     private Goal goal;
 
-    @ManyToOne
-    @JoinColumn(name="program_id")
-    private Program program;
 
-    @ManyToOne
-    @JoinColumn(name="workout_id")
-    private Workout workout;
 
 }

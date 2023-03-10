@@ -1,6 +1,7 @@
 package com.example.mefit.Services.Exercise;
 
 import com.example.mefit.Models.Exercise;
+import com.example.mefit.Models.Workout;
 import com.example.mefit.Repositories.ExerciseRepository;
 import com.example.mefit.Services.Goal.GoalServiceImpl;
 import org.slf4j.Logger;
@@ -48,4 +49,10 @@ public class ExerciseServiceImpl implements ExerciseService{
     public boolean exists(Integer integer) {
         return false;
     }
+
+    @Override
+    public Workout getWorkout(int Id) {
+        return null;
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.example.mefit.Services.Workout;
 
+import com.example.mefit.Models.Exercise;
 import com.example.mefit.Models.Goal;
 import com.example.mefit.Models.Program;
 import com.example.mefit.Models.Workout;
@@ -16,7 +17,7 @@ import java.util.Set;
 
 @Service
 public class WorkoutServiceImpl implements WorkoutService{
-    private final Logger logger= LoggerFactory.getLogger(UserServiceImpl.class);
+    private final Logger logger= LoggerFactory.getLogger(WorkoutServiceImpl.class);
     private final WorkoutRepository workoutRepository;
     private final GoalRepository goalRepository;
     private final ProgramRepository programRepository;
@@ -58,7 +59,7 @@ public class WorkoutServiceImpl implements WorkoutService{
     }
 
     @Override
-    public Set<Goal> getGoal(int Id) {
+    public Exercise getExercise(int Id) {
         return null;
     }
 

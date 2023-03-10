@@ -29,4 +29,12 @@ public class Program {
     )
     private Set<Workout> workout;
 
+    @ManyToMany
+    @JoinTable(
+            name = "program_goal",
+            joinColumns = @JoinColumn(name = "program_id"),
+            inverseJoinColumns = @JoinColumn(name = "goal_id")
+    )
+    private Set<Goal> goal;
+
 }
