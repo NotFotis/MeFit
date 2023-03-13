@@ -1,9 +1,11 @@
 package com.example.mefit.Controllers;
 
-import com.example.mefit.Mappers.ExerciseMapper;
-import com.example.mefit.Models.DTO.ExerciseDTO;
-import com.example.mefit.Models.Exercise;
-import com.example.mefit.Services.Exercise.ExerciseService;
+import com.example.mefit.Mappers.ProgramMapper;
+import com.example.mefit.Models.DTO.ProgramDTO;
+import com.example.mefit.Models.DTO.WorkoutDTO;
+import com.example.mefit.Models.Program;
+import com.example.mefit.Models.Workout;
+import com.example.mefit.Services.Program.ProgramService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -18,44 +20,44 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 @RestController
-@RequestMapping(path = "api/v1/exercise")
+@RequestMapping(path = "api/v1/program")
+public class ProgramController {
+    private final ProgramService programService;
+    private final ProgramMapper programMapper;
 
-public class ExerciseController {
-    private final ExerciseService exerciseService;
-    private final ExerciseMapper exerciseMapper;
-
-    public ExerciseController(ExerciseService exerciseService, ExerciseMapper exerciseMapper) {
-        this.exerciseService = exerciseService;
-        this.exerciseMapper = exerciseMapper;
+    public ProgramController(ProgramService programService, ProgramMapper programMapper) {
+        this.programService = programService;
+        this.programMapper = programMapper;
     }
 
+
     @GetMapping
-    @Operation(summary = "Gets all Exercises")
+    @Operation(summary = "Gets all Programs")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
                     description = "Success",
                     content = {
                             @Content(mediaType = "application/json",
-                                    array = @ArraySchema(schema = @Schema(implementation = ExerciseDTO.class)))
+                                    array = @ArraySchema(schema = @Schema(implementation = ProgramDTO.class)))
                     }
             )
     })
     public ResponseEntity findAll() {
-        Collection<ExerciseDTO> exercise = exerciseMapper.exerciseToExerciseDTO(
-                exerciseService.findAll()
+        Collection<ProgramDTO> program = programMapper.programToProgramDTO(
+                programService.findAll()
         );
-        return ResponseEntity.ok(exercise);
+        return ResponseEntity.ok(program);
     }
     @GetMapping("{id}")
-    @Operation(summary = "Gets an exercise by its ID")
+    @Operation(summary = "Gets a program by its ID")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
                     description = "Success",
                     content = {
                             @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = ExerciseDTO.class))
+                                    schema = @Schema(implementation = ProgramDTO.class))
                     }
             ),
             @ApiResponse(
@@ -67,12 +69,12 @@ public class ExerciseController {
     })
 
     public ResponseEntity findById(@PathVariable int id) {
-        ExerciseDTO exercise = exerciseMapper.exerciseToExerciseDTO(exerciseService.findById(id));
+        ProgramDTO program = programMapper.programToProgramDTO(programService.findById(id));
 
-        return ResponseEntity.ok(exercise);
+        return ResponseEntity.ok(program);
     }
     @PostMapping
-    @Operation(summary = "Adds a new exercise")
+    @Operation(summary = "Adds a new program")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "201",
@@ -81,16 +83,16 @@ public class ExerciseController {
             )
     })
 
-    public ResponseEntity<ExerciseDTO> add(@RequestBody ExerciseDTO exerciseDTO) {
-        Exercise exercise = exerciseMapper.exerciseDtoToExercise(exerciseDTO);
-        Exercise savedexercise = exerciseService.add(exercise);
-        ExerciseDTO result = exerciseMapper.exerciseToExerciseDTO(savedexercise);
+    public ResponseEntity<ProgramDTO> add(@RequestBody ProgramDTO programDTO) {
+        Program program = programMapper.programDtoToProgram(programDTO);
+        Program savedprogram = programService.add(program);
+        ProgramDTO result = programMapper.programToProgramDTO(savedprogram);
         return new ResponseEntity<>(result, HttpStatus.CREATED);
     }
 
 
     @PutMapping("{id}")
-    @Operation(summary = "Updates an exercise")
+    @Operation(summary = "Updates a program")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "204",
@@ -109,22 +111,22 @@ public class ExerciseController {
             )
     })
 
-    public ResponseEntity<ExerciseDTO> update(@PathVariable int id, @RequestBody ExerciseDTO exerciseDTO) {
-        Exercise exercise = exerciseMapper.exerciseDtoToExercise(exerciseDTO);
-        Exercise updatedExercise = exerciseService.update(id, exercise);
-        ExerciseDTO updatedExerciseDTO = exerciseMapper.exerciseToExerciseDTO(updatedExercise);
-        return ResponseEntity.ok(updatedExerciseDTO);
+    public ResponseEntity<ProgramDTO> update(@PathVariable int id, @RequestBody ProgramDTO programDTO) {
+        Program program = programMapper.programDtoToProgram(programDTO);
+        Program updatedProgram = programService.update(id, program);
+        ProgramDTO updatedProgramDTO = programMapper.programToProgramDTO(updatedProgram);
+        return ResponseEntity.ok(updatedProgramDTO);
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Deletes an exercise by its ID")
+    @Operation(summary = "Deletes a program by its ID")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
                     description = "Success",
                     content = {
                             @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = ExerciseDTO.class))
+                                    schema = @Schema(implementation = ProgramDTO.class))
                     }
             ),
             @ApiResponse(
@@ -135,10 +137,10 @@ public class ExerciseController {
             )
     })
     public void deleteById(@PathVariable int id) {
-        exerciseService.deleteById(id);
+        programService.deleteById(id);
     }
     @GetMapping("{id}/workout")
-    @Operation(summary = "Gets exercise Workouts")
+    @Operation(summary = "Gets program Workouts")
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
@@ -147,9 +149,19 @@ public class ExerciseController {
             )
     })
     public ResponseEntity getWorkout(@PathVariable int id) {
-        return ResponseEntity.ok(exerciseService.getWorkout(id));
+        return ResponseEntity.ok(programService.getWorkout(id));
     }
-
-
+    @GetMapping("{id}/goal")
+    @Operation(summary = "Gets program Goals")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Success",
+                    content = @Content
+            )
+    })
+    public ResponseEntity getGoal(@PathVariable int id) {
+        return ResponseEntity.ok(programService.getGoal(id));
+    }
 
 }
