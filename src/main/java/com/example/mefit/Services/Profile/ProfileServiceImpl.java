@@ -7,19 +7,18 @@ import com.example.mefit.Repositories.WorkoutRepository;
 import com.example.mefit.Services.Program.ProgramServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-
+@Service
 public class ProfileServiceImpl implements ProfileService{
     private final Logger logger= LoggerFactory.getLogger(ProgramServiceImpl.class);
     private final ProgramRepository programRepository;
-    private final ProfileService profileService;
     private final WorkoutRepository workoutRepository;
     private final GoalRepository goalRepository;
 
-    public ProfileServiceImpl(ProgramRepository programRepository, ProfileService profileService, WorkoutRepository workoutRepository, GoalRepository goalRepository) {
+    public ProfileServiceImpl(ProgramRepository programRepository, WorkoutRepository workoutRepository, GoalRepository goalRepository) {
         this.programRepository = programRepository;
-        this.profileService = profileService;
         this.workoutRepository = workoutRepository;
         this.goalRepository = goalRepository;
     }

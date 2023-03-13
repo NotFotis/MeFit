@@ -26,9 +26,7 @@ public class Profile {
     @Column(name = "profile_disabilities")
     private String disabilities;
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
+
 
     @ManyToOne
     @JoinColumn(name="goal_id")

@@ -18,6 +18,6 @@ public class GoalDTO {
     private int completed_programs;
     private Boolean achieved;
     private Set<Integer> program;
-    
+    private Set<Integer>  profile;
 
 }
