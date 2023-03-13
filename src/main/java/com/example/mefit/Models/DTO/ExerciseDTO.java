@@ -15,5 +15,5 @@ public class ExerciseDTO {
     private String img;
     private String vid;
     private Boolean complete;
-    private Workout workout;
+    private int workout;
 }

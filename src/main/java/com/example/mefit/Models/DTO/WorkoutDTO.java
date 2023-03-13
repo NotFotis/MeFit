@@ -15,5 +15,5 @@ public class WorkoutDTO {
     private String type;
     private Boolean complete_workout;
     private Set<Integer> program;
-    private Exercise exercise;
+    Set<Integer>  exercise;
 }

@@ -6,11 +6,8 @@ import com.example.mefit.Models.Workout;
 import com.example.mefit.Services.Workout.WorkoutService;
 import org.mapstruct.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import java.util.Collection;
-import java.util.Set;
-import java.util.stream.Collectors;
+
 
 @Mapper(componentModel = "spring")
 public abstract class ExerciseMapper {
