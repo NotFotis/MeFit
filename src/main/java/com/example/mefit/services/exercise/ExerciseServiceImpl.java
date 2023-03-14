@@ -35,7 +35,7 @@ public class ExerciseServiceImpl implements ExerciseService{
     }
 
     @Override
-    public Exercise update(Integer integer, Exercise entity) {
+    public Exercise update(Exercise entity) {
         return null;
     }
 

@@ -1,4 +1,6 @@
 package com.example.mefit.services.profile;
 
-public class ProfileService {
+import com.example.mefit.services.CrudService;
+import com.example.mefit.models.Profile;
+public interface ProfileService  extends CrudService<Profile, Integer> {
 }

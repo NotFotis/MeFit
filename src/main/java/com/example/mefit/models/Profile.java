@@ -20,7 +20,7 @@ public class Profile {
     private int height;
     @ManyToOne
     @JoinColumn(name="goal_id",nullable = false)
-    private Goal goal;
+    private int goal;
 
     //THE USER_ID
 }
