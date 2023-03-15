@@ -18,8 +18,8 @@ public class Program {
     private String name;
     @Column(name = "program_category",length = 50,nullable = false)
     private String category;
-    @Column(name = "program_done")
-    private Boolean done;
+    @Column(name = "program_complete")
+    private Boolean complete;
 
     @ManyToMany
     @JoinTable(

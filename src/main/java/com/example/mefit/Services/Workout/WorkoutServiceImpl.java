@@ -1,7 +1,6 @@
 package com.example.mefit.Services.Workout;
 
 import com.example.mefit.Models.Exercise;
-import com.example.mefit.Models.Goal;
 import com.example.mefit.Models.Program;
 import com.example.mefit.Models.Workout;
 import com.example.mefit.Repositories.GoalRepository;
@@ -29,18 +28,23 @@ public class WorkoutServiceImpl implements WorkoutService{
     }
 
     @Override
+    public Workout findById(int id) {
+        return workoutRepository.findById(id).get();
+    }
+
+    @Override
     public Workout findById(Integer integer) {
         return null;
     }
 
     @Override
     public Collection<Workout> findAll() {
-        return null;
+        return workoutRepository.findAll();
     }
 
     @Override
     public Workout add(Workout entity) {
-        return null;
+        return workoutRepository.save(entity);
     }
 
     @Override
@@ -54,13 +58,28 @@ public class WorkoutServiceImpl implements WorkoutService{
     }
 
     @Override
+    public Workout update(int id, Workout entity) {
+        return workoutRepository.save(entity);
+    }
+
+    @Override
+    public void deleteById(int id) {
+workoutRepository.deleteById(id);
+    }
+
+    @Override
     public boolean exists(Integer integer) {
         return false;
     }
 
     @Override
-    public Exercise getExercise(int Id) {
-        return null;
+    public boolean exists(int id) {
+        return workoutRepository.existsById(id);
+    }
+
+    @Override
+    public Set<Exercise> getExercise(int Id) {
+        return workoutRepository.findById(Id).get().getExercise();
     }
 
     @Override

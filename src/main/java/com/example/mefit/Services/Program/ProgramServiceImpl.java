@@ -24,23 +24,28 @@ public class ProgramServiceImpl implements ProgramService{
     }
 
     @Override
+    public Program findById(int id) {
+        return programRepository.findById(id).get();
+    }
+
+    @Override
     public Program findById(Integer integer) {
         return null;
     }
 
     @Override
     public Collection<Program> findAll() {
-        return null;
+        return programRepository.findAll();
     }
 
     @Override
     public Program add(Program entity) {
-        return null;
+        return programRepository.save(entity);
     }
 
     @Override
-    public Program update(Integer integer, Program entity) {
-        return null;
+    public Program update(Integer id, Program entity) {
+        return programRepository.save(entity);
     }
 
     @Override
@@ -54,13 +59,23 @@ public class ProgramServiceImpl implements ProgramService{
     }
 
     @Override
-    public Set<Workout> getWorkout(int Id) {
-        return null;
+    public void deleteById(int id) {
+programRepository.deleteById(id);
     }
 
     @Override
-    public Set<Goal> getGoal(int Id) {
-        return null;
+    public boolean exists(int id) {
+        return programRepository.existsById(id);
+    }
+
+    @Override
+    public Set<Workout> getWorkout(int id) {
+        return programRepository.findById(id).get().getWorkout();
+    }
+
+    @Override
+    public Set<Goal> getGoal(int id) {
+        return programRepository.findById(id).get().getGoal();
     }
 
 }
