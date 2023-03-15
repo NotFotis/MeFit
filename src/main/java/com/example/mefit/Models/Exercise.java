@@ -26,5 +26,8 @@ public class Exercise {
     private String vid;
     @Column(name = "exercise_complete")
     private Boolean complete;
+    @ManyToOne
+    @JoinColumn(name="workout_id")
+    private Workout workout;
 
 }

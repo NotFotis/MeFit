@@ -16,8 +16,6 @@ public class User {
     private String username;
     @Column(name = "user_password", length = 50, nullable = false)
     private String password;
-    @Column(name="user_email",length = 50,nullable = false)
-    private String email;
     @Column(name = "user_firstname",length = 50,nullable = false)
     private String firstname;
     @Column(name = "user_lastname",length = 50, nullable = false)
@@ -26,4 +24,5 @@ public class User {
     private Boolean isContributor;
     @Column(name = "user_isAdmin")
     private Boolean isAdmin;
+
 }

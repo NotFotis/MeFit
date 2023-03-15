@@ -3,7 +3,7 @@ package com.example.mefit.Models;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Set;
 
 @Entity
@@ -21,21 +21,11 @@ public class Workout {
     @Column(name = "workout_complete")
     private Boolean complete_workout;
 
-    @ManyToMany
-    @JoinTable(
-            name = "goal_workout",
-            joinColumns = @JoinColumn(name = "goal_id"),
-            inverseJoinColumns = @JoinColumn(name = "workout_id")
-    )
-    private Set<Goal> goal;
-
-    @ManyToMany
-    @JoinTable(
-            name = "program_workout",
-            joinColumns = @JoinColumn(name = "program_id"),
-            inverseJoinColumns = @JoinColumn(name = "workout_id")
-    )
+    @JsonIgnore
+    @ManyToMany(mappedBy = "workout")
     private Set<Program> program;
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "workout")
+    private Set<Exercise> exercise;
 
 }

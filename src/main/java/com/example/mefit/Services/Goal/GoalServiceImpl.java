@@ -1,12 +1,12 @@
 package com.example.mefit.Services.Goal;
 
 import com.example.mefit.Models.Goal;
+import com.example.mefit.Models.Profile;
 import com.example.mefit.Models.Program;
 import com.example.mefit.Models.Workout;
 import com.example.mefit.Repositories.GoalRepository;
 import com.example.mefit.Repositories.ProgramRepository;
 import com.example.mefit.Repositories.WorkoutRepository;
-import com.example.mefit.Services.User.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -63,7 +63,7 @@ public class GoalServiceImpl implements GoalService{
     }
 
     @Override
-    public Set<Workout> getWorkout(int Id) {
+    public Set<Profile> getProfile(int Id) {
         return null;
     }
 }
