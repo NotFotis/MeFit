@@ -3,7 +3,6 @@ package com.example.mefit.Services.Goal;
 import com.example.mefit.Models.Goal;
 import com.example.mefit.Models.Profile;
 import com.example.mefit.Models.Program;
-import com.example.mefit.Models.Workout;
 import com.example.mefit.Repositories.GoalRepository;
 import com.example.mefit.Repositories.ProgramRepository;
 import com.example.mefit.Repositories.WorkoutRepository;
@@ -28,18 +27,23 @@ public class GoalServiceImpl implements GoalService{
     }
 
     @Override
+    public Goal findById(int id) {
+        return goalRepository.findById(id).get();
+    }
+
+    @Override
     public Goal findById(Integer integer) {
         return null;
     }
 
     @Override
     public Collection<Goal> findAll() {
-        return null;
+        return goalRepository.findAll();
     }
 
     @Override
     public Goal add(Goal entity) {
-        return null;
+        return goalRepository.save(entity);
     }
 
     @Override
@@ -58,12 +62,27 @@ public class GoalServiceImpl implements GoalService{
     }
 
     @Override
-    public Program getProgram(int Id) {
-        return null;
+    public Goal update(int id, Goal entity) {
+        return goalRepository.save(entity);
+    }
+
+    @Override
+    public void deleteById(int id) {
+goalRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean exists(int id) {
+        return goalRepository.existsById(id);
+    }
+
+    @Override
+    public Set<Program> getProgram(int Id) {
+        return goalRepository.findById(Id).get().getProgram();
     }
 
     @Override
     public Set<Profile> getProfile(int Id) {
-        return null;
+        return goalRepository.findById(Id).get().getProfile();
     }
 }

@@ -21,11 +21,6 @@ public class Profile {
     private int weight;
     @Column(name = "profile_height")
     private int height;
-    @Column(name = "profile_medicalCondition")
-    private String medical_condition;
-    @Column(name = "profile_disabilities")
-    private String disabilities;
-
 
 
     @ManyToOne

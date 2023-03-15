@@ -26,8 +26,8 @@ public class Goal {
     private int total_programs;
     @Column(name = "goal_completed_programs")
     private int completed_programs;
-    @Column(name = "goal_achieved")
-    private Boolean achieved;
+    @Column(name = "goal_complete")
+    private Boolean complete;
 
     @ManyToMany
     @JoinTable(

@@ -1,0 +1,2 @@
+INSERT INTO workout(workout_id,workout_name,workout_type,workout_complete) VALUES (1,'SKULL CRUSHERS','BICEPS','false')
+INSERT INTO program(program_id,program_name,program_category,program_complete) VALUES(1,'Biceps','Strengthen','false')
