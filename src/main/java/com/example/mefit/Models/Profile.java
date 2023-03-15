@@ -13,7 +13,7 @@ import java.util.List;
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "exercise_id")
+    @Column(name = "profile_id")
     private int id;
     @Column(name = "profile_age")
     private int age;
@@ -21,7 +21,6 @@ public class Profile {
     private int weight;
     @Column(name = "profile_height")
     private int height;
-
 
     @ManyToOne
     @JoinColumn(name="goal_id")

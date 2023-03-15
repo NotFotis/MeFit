@@ -10,8 +10,5 @@ public class ProfileDTO {
     private int age;
     private int weight;
     private int height;
-    private String medical_condition;
-    private String disabilities;
-
     private int goal;
 }
