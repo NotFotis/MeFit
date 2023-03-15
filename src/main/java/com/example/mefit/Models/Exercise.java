@@ -18,11 +18,11 @@ public class Exercise {
     private String desc;
     @Column(name = "exercise_tmg",length = 50)
     private String tmg;//tmg stands for target muscle group
-    @Column(name = "exerciise_repetitions")
+    @Column(name = "exercise_repetitions")
     private int repetitions;
-    @Column(name = "exercise_img",length = 200)
+    @Column(name = "exercise_img",length = 250)
     private String img;
-    @Column(name = "exercise_vid",length = 200)
+    @Column(name = "exercise_vid",length = 250)
     private String vid;
     @Column(name = "exercise_complete")
     private Boolean complete;

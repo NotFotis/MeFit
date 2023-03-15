@@ -12,7 +12,7 @@ public class ProgramDTO {
     private int id;
     private String name;
     private String category;
-    private Boolean done;
+    private Boolean complete;
     private Set<Integer> workout;
     private Set<Integer> goal;
 }

@@ -32,8 +32,8 @@ public class Goal {
     @ManyToMany
     @JoinTable(
             name = "program_goal",
-            joinColumns = @JoinColumn(name = "program_id"),
-            inverseJoinColumns = @JoinColumn(name = "goal_id")
+            joinColumns = {@JoinColumn(name = "program_id")},
+            inverseJoinColumns = {@JoinColumn(name = "goal_id")}
     )
     private Set<Program> program;
 

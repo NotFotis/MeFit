@@ -13,7 +13,7 @@ public class WorkoutDTO {
     private int id;
     private String name;
     private String type;
-    private Boolean complete_workout;
+    private Boolean complete;
     private Set<Integer> program;
     private Set<Integer>  exercise;
 }
