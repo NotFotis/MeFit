@@ -12,7 +12,7 @@ public class Program {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int program_id;
+    private Integer program_id;
     @Column(length = 30, nullable = false)
     private String program_name;
     @Column(length = 30)

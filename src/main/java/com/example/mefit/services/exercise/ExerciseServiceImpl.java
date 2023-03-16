@@ -1,18 +1,15 @@
 package com.example.mefit.services.exercise;
 
+import com.example.mefit.exceptions.ExerciseNotFoundException;
 import com.example.mefit.models.Exercise;
-import com.example.mefit.models.Workout;
 import com.example.mefit.repositories.ExerciseRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-
-import java.util.Collection;
-
+import java.util.*;
 
 @Service
 public class ExerciseServiceImpl implements ExerciseService{
-    private final Logger logger = LoggerFactory.getLogger(ExerciseServiceImpl.class);
+
     private final ExerciseRepository exerciseRepository;
 
     public ExerciseServiceImpl(ExerciseRepository exerciseRepository) {
@@ -20,18 +17,18 @@ public class ExerciseServiceImpl implements ExerciseService{
     }
 
     @Override
-    public Exercise findById(Integer integer) {
-        return null;
+    public Exercise findById(Integer id) {
+        return exerciseRepository.findById(id).orElseThrow(()->new ExerciseNotFoundException(id));
     }
 
     @Override
     public Collection<Exercise> findAll() {
-        return null;
+        return exerciseRepository.findAll();
     }
 
     @Override
     public Exercise add(Exercise entity) {
-        return null;
+        return exerciseRepository.save(entity);
     }
 
     @Override
@@ -40,17 +37,20 @@ public class ExerciseServiceImpl implements ExerciseService{
     }
 
     @Override
-    public void deleteById(Integer integer) {
-
+    public Exercise update(int id, Exercise entity) {
+        return exerciseRepository.save(entity);
     }
 
+    @Override
+    @Transactional
+    public void deleteById(Integer id) {
+        if (exerciseRepository.existsById(id)) {
+            Exercise prof = exerciseRepository.findById(id).orElseThrow(()->new ExerciseNotFoundException(id));
+            exerciseRepository.delete(prof);
+        }
+    }
     @Override
     public boolean exists(Integer integer) {
         return false;
-    }
-
-    @Override
-    public Workout getWorkout(int Id) {
-        return null;
     }
 }

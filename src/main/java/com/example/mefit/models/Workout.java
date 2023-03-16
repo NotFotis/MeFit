@@ -12,7 +12,7 @@ import java.util.Set;
 public class Workout {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int workout_id;
+    private Integer workout_id;
     @Column(length = 30, nullable = false)
     private String workout_name;
     @Column(length = 30)
@@ -22,8 +22,4 @@ public class Workout {
     @JsonIgnore
     @OneToMany(mappedBy = "workout")
     private Set<Exercise> exercises;
-    @JsonIgnore
-    @ManyToMany(mappedBy = "workouts")
-    private Set<Program> programs;
-
 }

@@ -10,7 +10,7 @@ import lombok.Setter;
 public class Exercise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int exercise_id;
+    private Integer exercise_id;
     @Column(length = 30,nullable = false)
     private String exercise_name;
     @Column(length = 400)
@@ -18,7 +18,7 @@ public class Exercise {
     @Column(length = 30)
     private String target_muscle_group;
     @Column()
-    private int repetitions;
+    private Integer repetitions;
     @Column(length = 200)
     private String image;
     @Column(length = 200)
@@ -26,6 +26,6 @@ public class Exercise {
     @Column(nullable = false)
     private Boolean complete;
     @ManyToOne
-    @JoinColumn(name="workout_id",nullable = false)
+    @JoinColumn(name="workout",nullable = false)
     private Workout workout;
 }

@@ -11,10 +11,9 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class Goal {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int goal_id;
+    private Integer goal_id;
     @Column(length = 30, nullable = false)
     private String goal_name;
     @Column
@@ -22,16 +21,11 @@ public class Goal {
     @Column
     private LocalDate end_date;
     @Column()
-    private int total_programs;
+    private Integer total_programs;
     @Column()
-    private int completed_programs;
+    private Integer completed_programs;
     @Column(nullable = false)
     private boolean complete_goal;
-
-    @JsonIgnore
-    @ManyToMany(mappedBy = "goals")
-    private Set<Program> programs;
-
     @OneToMany(mappedBy = "goal")
     private Set<Profile> profiles;
 }

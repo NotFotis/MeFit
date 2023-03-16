@@ -1,5 +1,6 @@
 package com.example.mefit.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,16 +12,15 @@ public class Profile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int profile_id;
+    private Integer profile_id;
     @Column()
-    private int age;
+    private Integer age;
     @Column()
-    private int weight;
+    private Integer weight;
     @Column()
-    private int height;
+    private Integer height;
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="goal_id",nullable = false)
-    private int goal;
-
-    //THE USER_ID
+    @JoinColumn(name="goal_id")
+    private Goal goal;
 }

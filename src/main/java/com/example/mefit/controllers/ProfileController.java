@@ -27,7 +27,7 @@ public class ProfileController {
         this.profileService = profileService;
         this.profileMapper = profileMapper;
     }
-    @Operation(summary = "Get all Movies")
+    @Operation(summary = "Get all Profiles")
     @GetMapping
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",
@@ -66,34 +66,44 @@ public class ProfileController {
             )
     })
     public ResponseEntity add(@RequestBody ProfileDTO profileDTO) throws URISyntaxException {
-        Profile profile = new Profile();
-        profile.setAge(profileDTO.getAge());
-        profile.setGoal(profileDTO.getGoal());
-        profile.setHeight(profileDTO.getHeight());
-        profile.setWeight(profileDTO.getWeight());
-
-        profileService.add(profile);
-        URI uri = new URI("api/v1/profiles/");
-        return ResponseEntity.created(uri).build();
+        Profile addedProfile = profileService.add(profileMapper.profileDTOToProfile(profileDTO));
+        ProfileDTO addedProfileDTO = profileMapper.profileToProfileDTO(addedProfile);
+        URI uri = new URI("api/v1/profiles/" + addedProfileDTO.getProfile_id());
+        return ResponseEntity.created(uri).body(addedProfileDTO);
     }
 
     @Operation(summary = "Update a Profile")
     @PutMapping("{id}")
     @ApiResponses( value = {
             @ApiResponse(responseCode = "204",
-                    description = "Movie successfully updated",
+                    description = "Profile successfully updated",
                     content = @Content),
             @ApiResponse(responseCode = "400",
                     description = "Malformed request",
                     content = @Content),
             @ApiResponse(responseCode = "404",
-                    description = "Movie not found with supplied ID",
+                    description = "Profile not found with supplied ID",
                     content = @Content)
     })
-    public ResponseEntity update(@RequestBody Profile entity,@PathVariable int id){
-        if(id != entity.getProfile_id())
-            return ResponseEntity.badRequest().build();
-        profileService.update(entity);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity update(@RequestBody ProfileDTO profileDTO,@PathVariable int id){
+        Profile profile = profileMapper.profileDTOToProfile(profileDTO);
+        Profile updatedProfile = profileService.update(id, profile);
+        ProfileDTO updatedProfileDTO = profileMapper.profileToProfileDTO(updatedProfile);
+        return ResponseEntity.ok(updatedProfileDTO);
     }
+
+    @Operation(summary = "Delete a Profile")
+    @DeleteMapping("{id}")
+    @ApiResponses( value = {
+            @ApiResponse(responseCode = "204",
+                    description = "Profile successfully deleted",
+                    content = @Content),
+            @ApiResponse(responseCode = "404",
+                    description = "Profile not found with supplied ID",
+                    content = @Content)
+    })
+    public void deleteById(@PathVariable int id) {
+        profileService.deleteById(id);
+    }
+
 }
