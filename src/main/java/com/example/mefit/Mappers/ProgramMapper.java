@@ -20,7 +20,7 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Component
+
 @Mapper(componentModel = "spring")
 public abstract class ProgramMapper {
     @Autowired
@@ -41,11 +41,11 @@ public abstract class ProgramMapper {
                 .collect(Collectors.toSet());
     }
     @Named(value = "goalToGoalID")
-    Set<Integer> mapGoal(Set<Goal> value) {
-        if (value == null)
+    Set<Integer> mapGoal(Set<Goal> value1) {
+        if (value1 == null)
             return null;
-        return value.stream()
-                .map(s -> s.getId())
+        return value1.stream()
+                .map(d-> d.getId())
                 .collect(Collectors.toSet());
     }
     @Named("workoutIdToWorkout")
@@ -56,11 +56,12 @@ public abstract class ProgramMapper {
     }
 
     @Named("goalIdsToGoal")
-    Set<Goal> mapIdsToGoal(Set<Integer> id) {
-        return id.stream()
-                .map( i-> goalService.findById(i))
+    Set<Goal> mapIdsToGoal(Set<Integer> id1) {
+        return id1.stream()
+                .map( j-> goalService.findById(j))
                 .collect(Collectors.toSet());
     }
+
     @Mapping(target = "workout", source = "workout", qualifiedByName = "workoutIdToWorkout")
     @Mapping(target = "goal", source = "goal", qualifiedByName = "goalIdsToGoal")
     public abstract Program programDtoToProgram(ProgramDTO programDTO);
