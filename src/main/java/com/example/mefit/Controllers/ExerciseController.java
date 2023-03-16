@@ -89,7 +89,7 @@ public class ExerciseController {
     }
 
 
-    @PutMapping("{id}")
+    @PatchMapping("{id}")
     @Operation(summary = "Updates an exercise")
     @ApiResponses(value = {
             @ApiResponse(

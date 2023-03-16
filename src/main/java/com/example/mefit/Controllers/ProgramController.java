@@ -91,7 +91,7 @@ public class ProgramController {
     }
 
 
-    @PutMapping("{id}")
+    @PatchMapping("{id}")
     @Operation(summary = "Updates a program")
     @ApiResponses(value = {
             @ApiResponse(

@@ -90,7 +90,7 @@ public class GoalController {
     }
 
 
-    @PutMapping("{id}")
+    @PatchMapping("{id}")
     @Operation(summary = "Updates a goal")
     @ApiResponses(value = {
             @ApiResponse(

@@ -91,7 +91,7 @@ public class ProfileController {
     }
 
 
-    @PutMapping("{id}")
+    @PatchMapping("{id}")
     @Operation(summary = "Updates a profile")
     @ApiResponses(value = {
             @ApiResponse(

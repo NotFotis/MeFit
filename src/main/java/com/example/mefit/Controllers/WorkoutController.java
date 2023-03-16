@@ -18,6 +18,7 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.Collection;
 
 @RestController
@@ -83,15 +84,16 @@ public class WorkoutController {
             )
     })
 
-    public ResponseEntity<WorkoutDTO> add(@RequestBody WorkoutDTO workoutDTO) {
+    public ResponseEntity<WorkoutDTO> addWorkout(@RequestBody WorkoutDTO workoutDTO) {
         Workout workout = workoutMapper.workoutDtoToWorkout(workoutDTO);
-        Workout savedworkout = workoutService.add(workout);
-        WorkoutDTO result = workoutMapper.workoutToWorkoutDTO(savedworkout);
-        return new ResponseEntity<>(result, HttpStatus.CREATED);
+        Workout savedWorkout = workoutService.add(workout);
+        WorkoutDTO savedWorkoutDTO = workoutMapper.workoutToWorkoutDTO(savedWorkout);
+        return ResponseEntity.created(URI.create("api/v1/workout/" + savedWorkoutDTO.getId()))
+                .body(savedWorkoutDTO);
     }
 
 
-    @PutMapping("{id}")
+    @PatchMapping("{id}")
     @Operation(summary = "Updates a workout")
     @ApiResponses(value = {
             @ApiResponse(
