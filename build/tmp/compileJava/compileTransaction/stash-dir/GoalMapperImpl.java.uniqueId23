@@ -1,0 +1,57 @@
+package com.example.mefit.mappers;
+
+import com.example.mefit.models.Goal;
+import com.example.mefit.models.dtos.goal.GoalDTO;
+import java.sql.Date;
+import java.time.ZoneOffset;
+import java.util.ArrayList;
+import java.util.Collection;
+import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2023-03-16T14:53:16+0200",
+    comments = "version: 1.5.3.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.1.jar, environment: Java 17.0.5 (Amazon.com Inc.)"
+)
+@Component
+public class GoalMapperImpl implements GoalMapper {
+
+    @Override
+    public GoalDTO goalToGoalDTO(Goal goal) {
+        if ( goal == null ) {
+            return null;
+        }
+
+        GoalDTO goalDTO = new GoalDTO();
+
+        goalDTO.setProfiles( map( goal.getProfiles() ) );
+        goalDTO.setGoal_id( goal.getGoal_id() );
+        goalDTO.setGoal_name( goal.getGoal_name() );
+        if ( goal.getStart_date() != null ) {
+            goalDTO.setStart_date( new Date( goal.getStart_date().atStartOfDay( ZoneOffset.UTC ).toInstant().toEpochMilli() ) );
+        }
+        if ( goal.getEnd_date() != null ) {
+            goalDTO.setEnd_date( new Date( goal.getEnd_date().atStartOfDay( ZoneOffset.UTC ).toInstant().toEpochMilli() ) );
+        }
+        goalDTO.setTotal_programs( goal.getTotal_programs() );
+        goalDTO.setCompleted_programs( goal.getCompleted_programs() );
+        goalDTO.setComplete_goal( goal.isComplete_goal() );
+
+        return goalDTO;
+    }
+
+    @Override
+    public Collection<GoalDTO> goalToGoalDTO(Collection<Goal> goal) {
+        if ( goal == null ) {
+            return null;
+        }
+
+        Collection<GoalDTO> collection = new ArrayList<GoalDTO>( goal.size() );
+        for ( Goal goal1 : goal ) {
+            collection.add( goalToGoalDTO( goal1 ) );
+        }
+
+        return collection;
+    }
+}
