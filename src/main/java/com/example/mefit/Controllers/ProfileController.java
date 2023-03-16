@@ -149,6 +149,16 @@ public class ProfileController {
                     responseCode = "200",
                     description = "Success",
                     content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad Request",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not Found",
+                    content = @Content
             )
     })
     public ResponseEntity getGoal(@PathVariable int id) {

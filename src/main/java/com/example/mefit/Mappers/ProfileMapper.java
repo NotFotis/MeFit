@@ -1,11 +1,8 @@
 package com.example.mefit.Mappers;
 
-import com.example.mefit.Models.DTO.ExerciseDTO;
 import com.example.mefit.Models.DTO.ProfileDTO;
-import com.example.mefit.Models.Exercise;
 import com.example.mefit.Models.Goal;
 import com.example.mefit.Models.Profile;
-import com.example.mefit.Models.Workout;
 import com.example.mefit.Services.Goal.GoalService;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

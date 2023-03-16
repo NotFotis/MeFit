@@ -29,12 +29,8 @@ public class Goal {
     @Column(name = "goal_complete")
     private Boolean complete;
 
-    @ManyToMany
-    @JoinTable(
-            name = "program_goal",
-            joinColumns = {@JoinColumn(name = "program_id")},
-            inverseJoinColumns = {@JoinColumn(name = "goal_id")}
-    )
+    @JsonIgnore
+    @ManyToMany(mappedBy = "goal")
     private Set<Program> program;
 
     @JsonIgnore

@@ -1,5 +1,6 @@
 package com.example.mefit.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +23,7 @@ public class Profile {
     @Column(name = "profile_height")
     private int height;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="goal_id")
     private Goal goal;

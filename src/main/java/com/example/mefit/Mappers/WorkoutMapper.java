@@ -16,13 +16,14 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Component
+
 @Mapper(componentModel = "spring")
 public abstract class WorkoutMapper {
-@Autowired
-    protected ExerciseService exerciseService;
-@Autowired
+    @Autowired
     protected ProgramService programService;
+    @Autowired
+    protected ExerciseService exerciseService;
+
 
     @Mapping(target = "exercise", source = "exercise", qualifiedByName ="exerciseToExerciseID" )
     @Mapping(target = "program", source = "program", qualifiedByName = "programToProgramID")
@@ -37,11 +38,17 @@ public abstract class WorkoutMapper {
                 .collect(Collectors.toSet());
     }
     @Named(value = "exerciseToExerciseID")
-    Set<Integer> mapExercise(Set<Exercise> value) {
-        if (value == null)
+    Set<Integer> mapExercise(Set<Exercise> value1) {
+        if (value1 == null)
             return null;
-        return value.stream()
-                .map(s -> s.getId())
+        return value1.stream()
+                .map(d -> d.getId())
+                .collect(Collectors.toSet());
+    }
+    @Named("programIdsToProgram")
+    Set<Program> mapIdsToProgram(Set<Integer> id1) {
+        return id1.stream()
+                .map( j-> programService.findById(j))
                 .collect(Collectors.toSet());
     }
     @Named("exerciseIdToExercise")
@@ -51,12 +58,8 @@ public abstract class WorkoutMapper {
                 .collect(Collectors.toSet());
     }
 
-    @Named("programIdsToProgram")
-    Set<Program> mapIdsToProgram(Set<Integer> id) {
-        return id.stream()
-                .map( i-> programService.findById(i))
-                .collect(Collectors.toSet());
-    }
+
+
     @Mapping(target = "exercise", source = "exercise", qualifiedByName = "exerciseIdToExercise")
     @Mapping(target = "program", source = "program", qualifiedByName = "programIdsToProgram")
     public abstract Workout workoutDtoToWorkout(WorkoutDTO workoutDTO);

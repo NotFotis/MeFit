@@ -163,6 +163,7 @@ public class WorkoutController {
             )
     })
     public ResponseEntity getProgram(@PathVariable int id) {
+
         return ResponseEntity.ok(workoutService.getProgram(id));
     }
 

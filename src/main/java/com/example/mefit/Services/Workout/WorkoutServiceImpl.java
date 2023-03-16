@@ -84,6 +84,6 @@ workoutRepository.deleteById(id);
 
     @Override
     public Set<Program> getProgram(int Id) {
-        return null;
+        return workoutRepository.findById(Id).get().getProgram();
     }
 }
