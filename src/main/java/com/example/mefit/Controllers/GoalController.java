@@ -1,8 +1,10 @@
 package com.example.mefit.Controllers;
 
 import com.example.mefit.Mappers.GoalMapper;
+import com.example.mefit.Models.DTO.ExerciseDTO;
 import com.example.mefit.Models.DTO.GoalDTO;
 import com.example.mefit.Models.DTO.WorkoutDTO;
+import com.example.mefit.Models.Exercise;
 import com.example.mefit.Models.Goal;
 import com.example.mefit.Models.Workout;
 import com.example.mefit.Services.Goal.GoalService;
@@ -17,6 +19,8 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 @RestController
 @RequestMapping(path = "api/v1/goal")
@@ -82,11 +86,12 @@ public class GoalController {
             )
     })
 
-    public ResponseEntity<GoalDTO> add(@RequestBody GoalDTO goalDTO) {
-        Goal goal = goalMapper.goalDtoToGoal(goalDTO);
-        Goal savedgoal = goalService.add(goal);
-        GoalDTO result = goalMapper.goalToGoalDTO(savedgoal);
-        return new ResponseEntity<>(result, HttpStatus.CREATED);
+    public ResponseEntity<GoalDTO> add(@RequestBody GoalDTO entity) throws URISyntaxException {
+        Goal addedGoal = goalService.add(goalMapper.goalDtoToGoal(entity));
+        GoalDTO addedGoalDTO = goalMapper.goalToGoalDTO(addedGoal);
+
+        URI uri = new URI("api/v1/goal/" + addedGoalDTO.getId());
+        return ResponseEntity.created(uri).body(addedGoalDTO);
     }
 
 
@@ -111,8 +116,8 @@ public class GoalController {
     })
 
     public ResponseEntity<GoalDTO> update(@PathVariable int id, @RequestBody GoalDTO goalDTO) {
-        Goal goal = goalMapper.goalDtoToGoal(goalDTO);
-        Goal updatedGoal = goalService.update(id, goal);
+        Goal goalToUpdate = goalMapper.goalDtoToGoal(goalDTO);
+        Goal updatedGoal = goalService.update(id, goalToUpdate);
         GoalDTO updatedGoalDTO = goalMapper.goalToGoalDTO(updatedGoal);
         return ResponseEntity.ok(updatedGoalDTO);
     }

@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 
 @RestController
@@ -84,12 +85,11 @@ public class WorkoutController {
             )
     })
 
-    public ResponseEntity<WorkoutDTO> addWorkout(@RequestBody WorkoutDTO workoutDTO) {
-        Workout workout = workoutMapper.workoutDtoToWorkout(workoutDTO);
-        Workout savedWorkout = workoutService.add(workout);
+    public ResponseEntity<WorkoutDTO> add(@RequestBody WorkoutDTO workoutDTO) throws URISyntaxException {
+        Workout savedWorkout = workoutService.add(workoutMapper.workoutDtoToWorkout(workoutDTO));
         WorkoutDTO savedWorkoutDTO = workoutMapper.workoutToWorkoutDTO(savedWorkout);
-        return ResponseEntity.created(URI.create("api/v1/workout/" + savedWorkoutDTO.getId()))
-                .body(savedWorkoutDTO);
+        URI uri = new URI("api/v1/workout/" + savedWorkoutDTO.getId());
+        return ResponseEntity.created(uri).body(savedWorkoutDTO);
     }
 
 
