@@ -17,6 +17,8 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 
 @RestController
@@ -83,11 +85,11 @@ public class ProgramController {
             )
     })
 
-    public ResponseEntity<ProgramDTO> add(@RequestBody ProgramDTO programDTO) {
-        Program program = programMapper.programDtoToProgram(programDTO);
-        Program savedprogram = programService.add(program);
+    public ResponseEntity<ProgramDTO> add(@RequestBody ProgramDTO entity)throws URISyntaxException {
+        Program savedprogram = programService.add(programMapper.programDtoToProgram(entity));
         ProgramDTO result = programMapper.programToProgramDTO(savedprogram);
-        return new ResponseEntity<>(result, HttpStatus.CREATED);
+        URI uri = new URI("api/v1/program/" + result.getId());
+        return ResponseEntity.created(uri).body(result);
     }
 
 

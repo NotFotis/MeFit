@@ -15,6 +15,8 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 
 @RestController
@@ -81,11 +83,12 @@ public class ExerciseController {
             )
     })
 
-    public ResponseEntity<ExerciseDTO> add(@RequestBody ExerciseDTO exerciseDTO) {
-        Exercise exercise = exerciseMapper.exerciseDtoToExercise(exerciseDTO);
-        Exercise savedexercise = exerciseService.add(exercise);
-        ExerciseDTO result = exerciseMapper.exerciseToExerciseDTO(savedexercise);
-        return new ResponseEntity<>(result, HttpStatus.CREATED);
+    public ResponseEntity<ExerciseDTO> add(@RequestBody ExerciseDTO entity) throws URISyntaxException {
+        Exercise addedExercise = exerciseService.add(exerciseMapper.exerciseDtoToExercise(entity));
+        ExerciseDTO addedExerciseDTO = exerciseMapper.exerciseToExerciseDTO(addedExercise);
+
+        URI uri = new URI("api/v1/exercise/" + addedExerciseDTO.getId());
+        return ResponseEntity.created(uri).body(addedExerciseDTO);
     }
 
 
@@ -110,8 +113,8 @@ public class ExerciseController {
     })
 
     public ResponseEntity<ExerciseDTO> update(@PathVariable int id, @RequestBody ExerciseDTO exerciseDTO) {
-        Exercise exercise = exerciseMapper.exerciseDtoToExercise(exerciseDTO);
-        Exercise updatedExercise = exerciseService.update(id, exercise);
+        Exercise exerciseToUpdate = exerciseMapper.exerciseDtoToExercise(exerciseDTO);
+        Exercise updatedExercise = exerciseService.update(id, exerciseToUpdate);
         ExerciseDTO updatedExerciseDTO = exerciseMapper.exerciseToExerciseDTO(updatedExercise);
         return ResponseEntity.ok(updatedExerciseDTO);
     }

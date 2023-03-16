@@ -17,6 +17,8 @@ import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 
 @RestController
@@ -83,11 +85,12 @@ public class ProfileController {
             )
     })
 
-    public ResponseEntity<ProfileDTO> add(@RequestBody ProfileDTO profileDTO) {
-        Profile profile = profileMapper.profileDtoToProfile(profileDTO);
-        Profile savedprofile = profileService.add(profile);
-        ProfileDTO result = profileMapper.profileToProfileDTO(savedprofile);
-        return new ResponseEntity<>(result, HttpStatus.CREATED);
+    public ResponseEntity<ProfileDTO> add(@RequestBody ProfileDTO entity) throws URISyntaxException {
+        Profile addedProfile = profileService.add(profileMapper.profileDtoToProfile(entity));
+        ProfileDTO addedProfileDTO = profileMapper.profileToProfileDTO(addedProfile);
+
+        URI uri = new URI("api/v1/profile/" + addedProfileDTO.getId());
+        return ResponseEntity.created(uri).body(addedProfileDTO);
     }
 
 
