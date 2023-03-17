@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-03-16T18:52:22+0200",
+    date = "2023-03-17T15:35:25+0200",
     comments = "version: 1.5.3.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.1.jar, environment: Java 17.0.5 (Amazon.com Inc.)"
 )
 @Component
@@ -25,7 +25,8 @@ public class GoalMapperImpl extends GoalMapper {
 
         GoalDTO goalDTO = new GoalDTO();
 
-        goalDTO.setProfiles( map( goal.getProfiles() ) );
+        goalDTO.setProfiles( mapProfile( goal.getProfiles() ) );
+        goalDTO.setPrograms( mapProgram( goal.getPrograms() ) );
         goalDTO.setGoal_id( goal.getGoal_id() );
         goalDTO.setGoal_name( goal.getGoal_name() );
         if ( goal.getStart_date() != null ) {
@@ -64,6 +65,7 @@ public class GoalMapperImpl extends GoalMapper {
         Goal goal = new Goal();
 
         goal.setProfiles( mapIdsToProfile( goalDTO.getProfiles() ) );
+        goal.setPrograms( mapIdsToProgram( goalDTO.getPrograms() ) );
         goal.setGoal_id( goalDTO.getGoal_id() );
         goal.setGoal_name( goalDTO.getGoal_name() );
         if ( goalDTO.getStart_date() != null ) {

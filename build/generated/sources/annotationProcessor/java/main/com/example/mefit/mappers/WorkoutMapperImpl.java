@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-03-16T18:52:21+0200",
+    date = "2023-03-17T15:35:25+0200",
     comments = "version: 1.5.3.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.1.jar, environment: Java 17.0.5 (Amazon.com Inc.)"
 )
 @Component
@@ -23,7 +23,8 @@ public class WorkoutMapperImpl extends WorkoutMapper {
 
         WorkoutDTO workoutDTO = new WorkoutDTO();
 
-        workoutDTO.setExercises( map( workout.getExercises() ) );
+        workoutDTO.setExercises( mapExercise( workout.getExercises() ) );
+        workoutDTO.setPrograms( mapProgram( workout.getPrograms() ) );
         workoutDTO.setWorkout_id( workout.getWorkout_id() );
         workoutDTO.setWorkout_name( workout.getWorkout_name() );
         workoutDTO.setType( workout.getType() );
@@ -55,6 +56,7 @@ public class WorkoutMapperImpl extends WorkoutMapper {
         Workout workout = new Workout();
 
         workout.setExercises( mapIdsToExercise( workoutDTO.getExercises() ) );
+        workout.setPrograms( mapIdsToProgram( workoutDTO.getPrograms() ) );
         workout.setWorkout_id( workoutDTO.getWorkout_id() );
         workout.setWorkout_name( workoutDTO.getWorkout_name() );
         workout.setType( workoutDTO.getType() );
