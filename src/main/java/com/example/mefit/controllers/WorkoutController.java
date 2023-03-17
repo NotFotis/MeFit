@@ -97,14 +97,14 @@ public class WorkoutController {
         return ResponseEntity.ok(updatedWorkoutDTO);
     }
 
-    @Operation(summary = "Delete a Goal")
+    @Operation(summary = "Delete a Workout")
     @DeleteMapping("{id}")
     @ApiResponses( value = {
             @ApiResponse(responseCode = "204",
-                    description = "Goal successfully deleted",
+                    description = "Workout successfully deleted",
                     content = @Content),
             @ApiResponse(responseCode = "404",
-                    description = "Goal not found with supplied ID",
+                    description = "Workout not found with supplied ID",
                     content = @Content)
     })
     public void deleteById(@PathVariable int id) {

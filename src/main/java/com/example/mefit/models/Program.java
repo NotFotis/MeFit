@@ -1,5 +1,6 @@
 package com.example.mefit.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +20,9 @@ public class Program {
     private String category;
     @Column(nullable = false)
     private boolean complete_program;
-
+    @JsonIgnore
+    @ManyToMany(mappedBy = "programs")
+    private Set<Goal> goals;
     @ManyToMany
     @JoinTable(
             name = "program_workout",
@@ -27,12 +30,4 @@ public class Program {
             inverseJoinColumns = @JoinColumn(name = "workout_id")
     )
     private Set<Workout> workouts;
-
-    @ManyToMany
-    @JoinTable(
-            name = "program_goal",
-            joinColumns = @JoinColumn(name = "program_id"),
-            inverseJoinColumns = @JoinColumn(name = "goal_id")
-    )
-    private Set<Goal> goals;
 }

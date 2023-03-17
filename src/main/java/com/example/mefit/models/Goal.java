@@ -28,4 +28,12 @@ public class Goal {
     private boolean complete_goal;
     @OneToMany(mappedBy = "goal")
     private Set<Profile> profiles;
+
+    @ManyToMany
+    @JoinTable(
+            name = "goal_program",
+            joinColumns = @JoinColumn(name = "goal_id"),
+            inverseJoinColumns = @JoinColumn(name = "program_id")
+    )
+    private Set<Program> programs;
 }

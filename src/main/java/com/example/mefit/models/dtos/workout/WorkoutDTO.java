@@ -12,6 +12,8 @@ public class WorkoutDTO {
     private String workout_name;
     private String type;
     private Boolean complete_workout;
+    private Set<Integer> programs;
     private Set<Integer> exercises;
+
 
 }

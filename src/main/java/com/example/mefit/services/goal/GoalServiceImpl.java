@@ -4,6 +4,7 @@ import com.example.mefit.exceptions.GoalNotFoundException;
 import com.example.mefit.exceptions.ProfileNotFoundException;
 import com.example.mefit.models.Goal;
 import com.example.mefit.models.Profile;
+import com.example.mefit.models.Program;
 import com.example.mefit.repositories.GoalRepository;
 import com.example.mefit.repositories.ProfileRepository;
 import jakarta.transaction.Transactional;
@@ -64,27 +65,10 @@ public class GoalServiceImpl implements GoalService {
     }
 
     @Override
-    public Collection<Profile> getProfiles(int goalId) {
+    public Collection<Program> getPrograms(int goalId) {
         return goalRepository
                 .findById(goalId)
                 .orElseThrow(()->new GoalNotFoundException(goalId))
-                .getProfiles();
-    }
-
-    @Override
-    @Transactional
-    public void updateProfiles(int goalId, int[] profilesIds) {
-        Goal go = goalRepository
-                .findById(goalId)
-                .orElseThrow(()->new GoalNotFoundException(goalId));
-        Set<Profile> profileSet = new HashSet<>();
-        for (int id : profilesIds) {
-            profileRepository.setGoal(goalId,id);
-            profileSet.add(profileRepository
-                    .findById(id)
-                    .orElseThrow(()->new ProfileNotFoundException(id)));
-        }
-        go.setProfiles(profileSet);
-        goalRepository.save(go);
+                .getPrograms();
     }
 }

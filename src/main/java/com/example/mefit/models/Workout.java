@@ -20,6 +20,9 @@ public class Workout {
     @Column(nullable = false)
     private boolean complete_workout;
     @JsonIgnore
+    @ManyToMany(mappedBy = "workouts")
+    private Set<Program> programs;
+    @JsonIgnore
     @OneToMany(mappedBy = "workout")
     private Set<Exercise> exercises;
 }
