@@ -24,14 +24,10 @@ public class ExerciseServiceImpl implements ExerciseService{
     }
 
     @Override
-    public Exercise findById(int id) {
+    public Exercise findById(Integer id) {
         return exerciseRepository.findById(id).get();
     }
 
-    @Override
-    public Exercise findById(Integer integer) {
-        return null;
-    }
 
     @Override
     public Collection<Exercise> findAll() {
@@ -43,34 +39,19 @@ public class ExerciseServiceImpl implements ExerciseService{
         return exerciseRepository.save(entity);
     }
 
-    @Override
-    public Exercise update(Integer integer, Exercise entity) {
-        return null;
-    }
-
 
     @Override
-    public void deleteById(Integer integer) {
-
-    }
-
-    @Override
-    public boolean exists(Integer integer) {
-        return false;
-    }
-
-    @Override
-    public Exercise update(int id, Exercise entity) {
+    public Exercise update(Integer id, Exercise entity) {
         return exerciseRepository.save(entity);
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(Integer id) {
 exerciseRepository.deleteById(id);
     }
 
     @Override
-    public boolean exists(int id) {
+    public boolean exists(Integer id) {
         return exerciseRepository.existsById(id);
     }
 

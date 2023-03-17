@@ -4,6 +4,7 @@ import com.example.mefit.Models.Goal;
 import com.example.mefit.Models.Profile;
 import com.example.mefit.Models.Program;
 import com.example.mefit.Repositories.GoalRepository;
+import com.example.mefit.Repositories.ProfileRepository;
 import com.example.mefit.Repositories.ProgramRepository;
 import com.example.mefit.Repositories.WorkoutRepository;
 import org.slf4j.Logger;
@@ -18,22 +19,17 @@ public class GoalServiceImpl implements GoalService{
     private final Logger logger= LoggerFactory.getLogger(GoalServiceImpl.class);
     private final GoalRepository goalRepository;
     private final ProgramRepository programRepository;
-    private final WorkoutRepository workoutRepository;
+    private final ProfileRepository profileRepository;
 
-    public GoalServiceImpl(GoalRepository goalRepository, ProgramRepository programRepository, WorkoutRepository workoutRepository) {
+    public GoalServiceImpl(GoalRepository goalRepository, ProgramRepository programRepository, ProfileRepository profileRepository) {
         this.goalRepository = goalRepository;
         this.programRepository = programRepository;
-        this.workoutRepository = workoutRepository;
+        this.profileRepository = profileRepository;
     }
 
     @Override
-    public Goal findById(int id) {
+    public Goal findById(Integer id) {
         return goalRepository.findById(id).get();
-    }
-
-    @Override
-    public Goal findById(Integer integer) {
-        return null;
     }
 
     @Override
@@ -46,33 +42,19 @@ public class GoalServiceImpl implements GoalService{
         return goalRepository.save(entity);
     }
 
-    @Override
-    public Goal update(Integer integer, Goal entity) {
-        return null;
-    }
 
     @Override
-    public void deleteById(Integer integer) {
-
-    }
-
-    @Override
-    public boolean exists(Integer integer) {
-        return false;
-    }
-
-    @Override
-    public Goal update(int id, Goal entity) {
+    public Goal update(Integer id, Goal entity) {
         return goalRepository.save(entity);
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(Integer id) {
 goalRepository.deleteById(id);
     }
 
     @Override
-    public boolean exists(int id) {
+    public boolean exists(Integer id) {
         return goalRepository.existsById(id);
     }
 

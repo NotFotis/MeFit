@@ -23,13 +23,8 @@ public class ProfileServiceImpl implements ProfileService{
     }
 
     @Override
-    public Profile findById(int id) {
+    public Profile findById(Integer id) {
         return profileRepository.findById(id).get();
-    }
-
-    @Override
-    public Profile findById(Integer integer) {
-        return null;
     }
 
     @Override
@@ -43,37 +38,19 @@ public class ProfileServiceImpl implements ProfileService{
     }
 
     @Override
-    public Profile update(Integer integer, Profile entity) {
-        return null;
-    }
-
-    @Override
-    public void deleteById(Integer integer) {
-
-    }
-
-    @Override
-    public boolean exists(Integer integer) {
-        return false;
-    }
-
-    @Override
-    public Profile update(int id, Profile entity) {
+    public Profile update(Integer id, Profile entity) {
         return profileRepository.save(entity);
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(Integer id) {
 profileRepository.deleteById(id);
     }
 
     @Override
-    public boolean exists(int id) {
+    public boolean exists(Integer id) {
         return profileRepository.existsById(id);
     }
-
-
-
     @Override
     public Goal getGoal(int id) {
         return profileRepository.findById(id).get().getGoal();

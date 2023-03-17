@@ -8,13 +8,6 @@ import com.example.mefit.Services.CrudService;
 import java.util.Set;
 
 public interface WorkoutService extends CrudService<Workout,Integer> {
-    Workout findById(int id);
-
-    Workout update(int id, Workout entity);
-
-    void deleteById(int id);
-
-    boolean exists(int id);
 
     Set<Exercise> getExercise(int Id);
 

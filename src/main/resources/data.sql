@@ -5,3 +5,5 @@ INSERT INTO exercise(exercise_id,exercise_name,exercise_desc,exercise_tmg,exerci
 INSERT INTO profile(profile_id,profile_age,profile_weight,profile_height,goal_id) VALUES (1,25,90,190,1);
 INSERT INTO program_workout(program_id,workout_id) VALUES (1,1);
 INSERT INTO program_goal(program_id,goal_id) VALUES (1,1);
+INSERT INTO workout(workout_id,workout_name,workout_type,workout_complete) VALUES (2,'SKULL CRUSHERS','BICEPS','false');
+INSERT INTO program_workout(program_id,workout_id) VALUES (1,2);
