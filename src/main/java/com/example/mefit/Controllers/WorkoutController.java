@@ -84,12 +84,11 @@ public class WorkoutController {
                     content = @Content
             )
     })
-
-    public ResponseEntity<WorkoutDTO> add(@RequestBody WorkoutDTO workoutDTO) throws URISyntaxException {
-        Workout savedWorkout = workoutService.add(workoutMapper.workoutDtoToWorkout(workoutDTO));
+    public ResponseEntity<WorkoutDTO> addWorkout(@RequestBody WorkoutDTO workoutDTO) {
+        Workout workout = workoutMapper.workoutDtoToWorkout(workoutDTO);
+        Workout savedWorkout = workoutService.add(workout);
         WorkoutDTO savedWorkoutDTO = workoutMapper.workoutToWorkoutDTO(savedWorkout);
-        URI uri = new URI("api/v1/workout/" + savedWorkoutDTO.getId());
-        return ResponseEntity.created(uri).body(savedWorkoutDTO);
+        return new ResponseEntity<>(savedWorkoutDTO, HttpStatus.CREATED);
     }
 
 
