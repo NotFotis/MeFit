@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-03-17T15:35:25+0200",
+    date = "2023-03-18T11:25:10+0200",
     comments = "version: 1.5.3.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.1.jar, environment: Java 17.0.5 (Amazon.com Inc.)"
 )
 @Component
@@ -32,6 +32,7 @@ public class ExerciseMapperImpl extends ExerciseMapper {
         exerciseDTO.setRepetitions( exercise.getRepetitions() );
         exerciseDTO.setImage( exercise.getImage() );
         exerciseDTO.setVideo( exercise.getVideo() );
+        exerciseDTO.setComplete_exercise( exercise.getComplete_exercise() );
 
         return exerciseDTO;
     }
@@ -68,6 +69,7 @@ public class ExerciseMapperImpl extends ExerciseMapper {
         exercise.setRepetitions( exerciseDTO.getRepetitions() );
         exercise.setImage( exerciseDTO.getImage() );
         exercise.setVideo( exerciseDTO.getVideo() );
+        exercise.setComplete_exercise( exerciseDTO.getComplete_exercise() );
 
         return exercise;
     }
