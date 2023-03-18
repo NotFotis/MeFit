@@ -1,5 +1,6 @@
 package com.example.mefit.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,8 +25,10 @@ public class Exercise {
     @Column(length = 200)
     private String video;
     @Column(nullable = false)
-    private Boolean complete;
+    private Boolean complete_exercise;
+
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="workout",nullable = false)
+    @JoinColumn(name="workout_id",nullable = false)
     private Workout workout;
 }

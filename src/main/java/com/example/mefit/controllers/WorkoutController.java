@@ -3,6 +3,7 @@ package com.example.mefit.controllers;
 import com.example.mefit.mappers.WorkoutMapper;
 import com.example.mefit.mappers.ExerciseMapper;
 import com.example.mefit.models.Workout;
+import com.example.mefit.models.dtos.exercise.ExerciseDTO;
 import com.example.mefit.models.dtos.workout.WorkoutDTO;
 import com.example.mefit.services.workout.WorkoutService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,12 +23,10 @@ import java.net.URISyntaxException;
 public class WorkoutController {
     private final WorkoutService workoutService;
     private final WorkoutMapper workoutMapper;
-    private final ExerciseMapper exerciseMapper;
 
-    public WorkoutController(WorkoutService workoutService, WorkoutMapper workoutMapper, ExerciseMapper exerciseMapper) {
+    public WorkoutController(WorkoutService workoutService, WorkoutMapper workoutMapper) {
         this.workoutService = workoutService;
         this.workoutMapper = workoutMapper;
-        this.exerciseMapper = exerciseMapper;
     }
 
 
@@ -110,4 +109,22 @@ public class WorkoutController {
     public void deleteById(@PathVariable int id) {
         workoutService.deleteById(id);
     }
+
+    @Operation(summary = "Get all the exercises from a Workout")
+    @GetMapping("{id}/exercises")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Success",
+                    content = @Content),
+            @ApiResponse(responseCode = "404",
+                    description = "This workout does not have any exercises",
+                    content = @Content)
+    })
+    public ResponseEntity getExercises(@PathVariable int id){
+        return ResponseEntity.ok(workoutMapper
+                .workoutToWorkoutDTO(workoutService.findById(id))
+                .getExercises()
+        );
+    }
+
 }

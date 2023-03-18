@@ -108,4 +108,22 @@ public class ProgramController {
     public void deleteById(@PathVariable int id) {
         programService.deleteById(id);
     }
+
+    @Operation(summary = "Get all the workouts from a Program")
+    @GetMapping("{id}/workouts")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Success",
+                    content = @Content),
+            @ApiResponse(responseCode = "404",
+                    description = "This program does not have any workouts",
+                    content = @Content)
+    })
+    public ResponseEntity getWorkouts(@PathVariable int id){
+        return ResponseEntity.ok(programMapper
+                .programToProgramDTO(programService.findById(id))
+                .getWorkouts()
+        );
+    }
+
 }

@@ -1,7 +1,10 @@
 package com.example.mefit.controllers;
 
+import com.example.mefit.mappers.ProgramMapper;
 import com.example.mefit.models.Goal;
+import com.example.mefit.models.dtos.exercise.ExerciseDTO;
 import com.example.mefit.models.dtos.goal.GoalDTO;
+import com.example.mefit.models.dtos.program.ProgramDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -22,12 +25,10 @@ import java.net.URISyntaxException;
 public class GoalController {
     private final GoalService goalService;
     private final GoalMapper goalMapper;
-    private final ProfileMapper profileMapper;
 
-    public GoalController(GoalService goalService, GoalMapper goalMapper, ProfileMapper profileMapper) {
+    public GoalController(GoalService goalService, GoalMapper goalMapper) {
         this.goalService = goalService;
         this.goalMapper = goalMapper;
-        this.profileMapper = profileMapper;
     }
 
     @Operation(summary = "Get all the Goals")
@@ -110,4 +111,22 @@ public class GoalController {
     public void deleteById(@PathVariable int id) {
         goalService.deleteById(id);
     }
+
+    @Operation(summary = "Get all the programs from a Goal")
+    @GetMapping("{id}/programs")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Success",
+                    content = @Content),
+            @ApiResponse(responseCode = "404",
+                    description = "This goal does not have any programs",
+                    content = @Content)
+    })
+    public ResponseEntity getPrograms(@PathVariable int id){
+        return ResponseEntity.ok(goalMapper
+                .goalToGoalDTO(goalService.findById(id))
+                .getPrograms()
+        );
+    }
+
 }
