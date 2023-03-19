@@ -23,6 +23,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping(path = "api/v1/profile")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ProfileController {
     private final ProfileService profileService;
     private final ProfileMapper profileMapper;

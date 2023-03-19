@@ -24,6 +24,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 @RestController
 @RequestMapping(path = "api/v1/goal")
+@CrossOrigin(origins = "http://localhost:3000")
 public class GoalController {
     private final GoalService goalService;
     private final GoalMapper goalMapper;
