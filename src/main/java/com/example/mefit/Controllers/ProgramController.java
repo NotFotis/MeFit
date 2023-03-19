@@ -23,6 +23,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping(path = "api/v1/program")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ProgramController {
     private final ProgramService programService;
     private final ProgramMapper programMapper;
