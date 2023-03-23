@@ -27,7 +27,7 @@ public class Goal {
     @Column(name = "goal_completed_programs")
     private int completed_programs;
     @Column(name = "goal_complete")
-    private Boolean complete;
+    private boolean complete;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "goal")
