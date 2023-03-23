@@ -22,9 +22,8 @@ public class SecurityConfig {
                 .csrf().disable()
                 // Enable security for http requests
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/api/v1/*").permitAll()
-                        .requestMatchers("/api/v1/**").permitAll()
-                        .requestMatchers("/api/v1/resources/authorized").hasAuthority("ADMIN")
+                     .requestMatchers("/api/v1/**").permitAll()
+                        .requestMatchers("/api/v1/users").hasRole("Administrator")
                         // All remaining paths require authentication
                         .anyRequest().authenticated()
                 )

@@ -1,8 +1,7 @@
 package com.example.mefit.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,4 +14,5 @@ public class AppUser {
     private String uid;
     private String bio;
     private boolean complete;
+
 }

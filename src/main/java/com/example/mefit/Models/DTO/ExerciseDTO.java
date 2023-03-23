@@ -14,6 +14,6 @@ public class ExerciseDTO {
     private int repetitions;
     private String img;
     private String vid;
-    private Boolean complete;
+    private boolean complete;
     private int workout;
 }

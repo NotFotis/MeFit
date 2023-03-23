@@ -19,7 +19,7 @@ public class Program {
     @Column(name = "program_category",length = 50,nullable = false)
     private String category;
     @Column(name = "program_complete")
-    private Boolean complete;
+    private boolean complete;
 
     @ManyToMany
     @JoinTable(

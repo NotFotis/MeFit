@@ -16,7 +16,7 @@ public class GoalDTO {
     private Date end_date;
     private int total_programs;
     private int completed_programs;
-    private Boolean complete;
+    private boolean complete;
     private Set<Integer> program;
     private Set<Integer>  profile;
 
