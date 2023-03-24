@@ -19,7 +19,7 @@ public class Workout {
     @Column(name = "workout_type",length = 50,nullable = false)
     private String type;
     @Column(name = "workout_complete")
-    private boolean complete;
+    private boolean workout_complete;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "workout")

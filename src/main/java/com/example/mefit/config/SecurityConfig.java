@@ -23,7 +23,7 @@ public class SecurityConfig {
                 // Enable security for http requests
                 .authorizeHttpRequests(authorize -> authorize
                      .requestMatchers("/api/v1/**").permitAll()
-                        .requestMatchers("/api/v1/users").hasRole("Administrator")
+//                        .requestMatchers("/api/v1/users").hasAuthority("Administrator")
                         // All remaining paths require authentication
                         .anyRequest().authenticated()
                 )

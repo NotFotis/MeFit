@@ -26,7 +26,7 @@ public class Exercise {
     @Column(name = "exercise_vid",length = 250)
     private String vid;
     @Column(name = "exercise_complete")
-    private boolean complete;
+    private boolean exercise_complete;
 
     @JsonIgnore
     @ManyToOne
