@@ -22,12 +22,14 @@ public class SecurityConfig {
                 .csrf().disable()
                 // Enable security for http requests
                 .authorizeHttpRequests(authorize -> authorize
-                     .requestMatchers("/api/v1/exercise").permitAll()
-                        .requestMatchers("/api/v1/profile").permitAll()
-                        .requestMatchers("/api/v1/workout").permitAll()
-                        .requestMatchers("/api/v1/goal").permitAll()
-                        .requestMatchers("/api/v1/program").permitAll()
-                        .requestMatchers("/api/v1/users/info").hasAuthority("Administrator")
+//                     .requestMatchers("/api/v1/exercise").permitAll()
+//                        .requestMatchers("/api/v1/profile").permitAll()
+//                        .requestMatchers("/api/v1/workout").permitAll()
+//                        .requestMatchers("/api/v1/goal").permitAll()
+//                        .requestMatchers("/api/v1/program").permitAll()
+//                        .requestMatchers("api/v1/users/info").hasRole("profile")
+//                        .requestMatchers("api/v1/users/principal").hasAuthority("profile")
+                                .requestMatchers("api/v1/**").permitAll()
                         // All remaining paths require authentication
                         .anyRequest().authenticated()
                 )
@@ -43,7 +45,7 @@ public class SecurityConfig {
         // Use roles claim as authorities
         grantedAuthoritiesConverter.setAuthoritiesClaimName("roles");
         // Add the ROLE_ prefix - for hasRole
-        grantedAuthoritiesConverter.setAuthorityPrefix("ROLE_");
+        grantedAuthoritiesConverter.setAuthorityPrefix("SCOPE_");
 
         JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
