@@ -23,9 +23,14 @@ public class SecurityConfig {
                 // Enable security for http requests
                 .authorizeHttpRequests(authorize -> authorize
                      .requestMatchers("/api/v1/exercise").permitAll()
-                        //.requestMatchers(HttpMethod.GET, "/api/v1/exercise/**").hasRole("Contributor")
-                        //.requestMatchers(HttpMethod.GET, "/api/v1/workout/**").hasRole("Contributor")
+                        //.requestMatchers("/api/v1/exercise/**").hasRole("Contributor")
+                        //.requestMatchers("/api/v1/workout/**").hasRole("Contributor")
                         //.requestMatchers(HttpMethod.GET, "/api/v1/program/**").hasRole("Contributor")
+                        //.requestMatchers(HttpMethod.GET, "/api/v1/").hasRole()
+                        //.requestMatchers(HttpMethod.GET, "/api/v1/").hasRole()
+                        //.requestMatchers(HttpMethod.GET, "/api/v1/").hasRole()
+                        //.requestMatchers(HttpMethod.GET, "/api/v1/").hasRole()
+                        //.requestMatchers(HttpMethod.GET, "/api/v1/").hasRole()
                         .requestMatchers("/api/v1/exercise/**").permitAll()
                         .requestMatchers("/api/v1/profile").permitAll()
                         .requestMatchers("/api/v1/workout").permitAll()
