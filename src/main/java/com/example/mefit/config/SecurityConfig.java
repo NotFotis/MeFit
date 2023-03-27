@@ -15,14 +15,17 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 // Enable CORS -- this is further configured on the controllers
-                .cors().and()
+                //.cors().and()
                 // Sessions will not be used
-                .sessionManagement().disable()
+                //.sessionManagement().disable()
                 // Disable CSRF -- not necessary when there are no sessions
-                .csrf().disable()
+                //.csrf().disable()
                 // Enable security for http requests
                 .authorizeHttpRequests(authorize -> authorize
                      .requestMatchers("/api/v1/exercise").permitAll()
+                        //.requestMatchers(HttpMethod.GET, "/api/v1/exercise/**").hasRole("Contributor")
+                        //.requestMatchers(HttpMethod.GET, "/api/v1/workout/**").hasRole("Contributor")
+                        //.requestMatchers(HttpMethod.GET, "/api/v1/program/**").hasRole("Contributor")
                         .requestMatchers("/api/v1/exercise/**").permitAll()
                         .requestMatchers("/api/v1/profile").permitAll()
                         .requestMatchers("/api/v1/workout").permitAll()
@@ -35,20 +38,23 @@ public class SecurityConfig {
                 )
                 .oauth2ResourceServer()
                 .jwt()
-                .jwtAuthenticationConverter(jwtRoleAuthenticationConverter());
+                .jwtAuthenticationConverter(jwtAuthenticationConverterForKeycloak());
         return http.build();
     }
 
-    @Bean
-    public JwtAuthenticationConverter jwtRoleAuthenticationConverter() {
-        JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
-        // Use roles claim as authorities
-        grantedAuthoritiesConverter.setAuthoritiesClaimName("roles");
-        // Add the ROLE_ prefix - for hasRole
-        grantedAuthoritiesConverter.setAuthorityPrefix("SCOPE_");
+    @SuppressWarnings("unused")
+    public JwtAuthenticationConverter jwtAuthenticationConverterForKeycloak() {
+        Converter<Jwt, Collection<GrantedAuthority>> jwtGrantedAuthoritiesConverter = jwt -> {
+            Map<String, Collection<String>> realmAccess = jwt.getClaim("realm_access");
+            Collection<String> roles = realmAccess.get("roles");
+            return roles.stream()
+                    .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+                    .collect(Collectors.toList());
+        };
 
-        JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
-        jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
+        var jwtAuthenticationConverter = new JwtAuthenticationConverter();
+        jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(jwtGrantedAuthoritiesConverter);
+
         return jwtAuthenticationConverter;
     }
 }
