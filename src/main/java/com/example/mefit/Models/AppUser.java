@@ -15,4 +15,6 @@ public class AppUser {
     private String bio;
     private boolean complete;
 
+    @OneToOne(mappedBy = "user")
+    private Profile profile;
 }

@@ -165,6 +165,4 @@ public class ProfileController {
     public ResponseEntity getGoal(@PathVariable int id) {
         return ResponseEntity.ok(profileService.getGoal(id));
     }
-
-
 }

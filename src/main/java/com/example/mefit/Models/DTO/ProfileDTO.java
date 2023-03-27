@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class ProfileDTO {
     private int id;
+    private String user;
     private int age;
     private int weight;
     private int height;

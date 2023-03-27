@@ -16,6 +16,11 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "profile_id")
     private int id;
+
+    @OneToOne()
+    @JoinColumn(name = "user_id")
+    private AppUser user;
+
     @Column(name = "profile_age")
     private int age;
     @Column(name = "profile_weight")
