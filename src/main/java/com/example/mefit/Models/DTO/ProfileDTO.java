@@ -11,5 +11,6 @@ public class ProfileDTO {
     private int weight;
     private int height;
     private int goal;
+    private String user;
 
 }

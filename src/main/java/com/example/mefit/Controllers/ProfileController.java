@@ -166,5 +166,28 @@ public class ProfileController {
         return ResponseEntity.ok(profileService.getGoal(id));
     }
 
+    @GetMapping("{id}/user")
+    @Operation(summary = "Gets profile User")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Success",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad Request",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not Found",
+                    content = @Content
+            )
+    })
+    public ResponseEntity getUser(@PathVariable int id) {
+        return ResponseEntity.ok(profileService.getUser(id));
+    }
+
 
 }

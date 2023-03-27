@@ -23,6 +23,7 @@ public class SecurityConfig {
                 // Enable security for http requests
                 .authorizeHttpRequests(authorize -> authorize
                      .requestMatchers("/api/v1/exercise").permitAll()
+                        .requestMatchers("/api/v1/exercise/**").permitAll()
                         .requestMatchers("/api/v1/profile").permitAll()
                         .requestMatchers("/api/v1/workout").permitAll()
                         .requestMatchers("/api/v1/goal").permitAll()
@@ -30,7 +31,7 @@ public class SecurityConfig {
                         .requestMatchers("api/v1/users/info").hasRole("profile")
                         .requestMatchers("api/v1/users/principal").hasAuthority("profile")
                         // All remaining paths require authentication
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
                 .oauth2ResourceServer()
                 .jwt()
