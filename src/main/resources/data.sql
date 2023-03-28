@@ -1,54 +1,48 @@
-/*FOR THE USERS*/
-INSERT INTO users (username,user_password,first_name,last_name,iscontributor,isadmin) 
-VALUES ('Kostas1','Hello1234!','Konstantinos1','Kokonos1',true,true),
-       ('Kostas2','Hello1234!','Konstantinos2','Kokonos2',true,false),
-       ('Kostas3','Hello1234!','Konstantinos3','Kokonos3',false,false);
+INSERT INTO app_user(uid) VALUES ('1');
+INSERT INTO app_user(uid) VALUES ('2');
+INSERT INTO app_user(uid) VALUES ('3');
+INSERT INTO app_user(uid) VALUES ('4');
 
-/*FOR THE GOAL*/
-INSERT INTO goal (goal_name,complete_goal) 
-VALUES ('Lose weight',false),
-       ('Gain Muscle Mass',false),
-       ('Get Shredded',false);
+INSERT INTO workout(workout_id,workout_name,workout_type,workout_complete) VALUES (1,'SKULL CRUSHERS','BICEPS','false');
+INSERT INTO workout(workout_id,workout_name,workout_type,workout_complete) VALUES (2,'SKIP LEG DAY','LEGS','false');
+INSERT INTO workout(workout_id,workout_name,workout_type,workout_complete) VALUES (3,'GET ABS','ABS','false');
+INSERT INTO workout(workout_id,workout_name,workout_type,workout_complete) VALUES (4,'SQUATS','LEGS','false');
+INSERT INTO workout(workout_id,workout_name,workout_type,workout_complete) VALUES (5,'BENCH PRESS','CHEST','false');
+INSERT INTO workout(workout_id,workout_name,workout_type,workout_complete) VALUES (6,'PLANKS','ABS','false');
 
-/*FOR THE PROFILE*/
-INSERT INTO profile (goal_id,age,weight,height)
-VALUES (2,24,78,160),
-		(1,26,80,170),
-		(1,28,82,167);
 
-/*FOR THE PROGRAM*/
-INSERT INTO program (program_name,category,complete_program) 
-VALUES ('Mr/Ms Olympia','Upper-Lower Body',false),
-       ('Up Up Up','Upper Body',false),
-       ('Down Down Down','Lower Body',false),
-       ('Run Run Run','Aerobic',false);
+INSERT INTO program(program_id,program_name,program_category,program_complete) VALUES(1,'Biceps','Strengthen','false');
+INSERT INTO program(program_id,program_name,program_category,program_complete) VALUES(2,'Triceps','Fat loss','false');
+INSERT INTO program(program_id,program_name,program_category,program_complete) VALUES(3,'Back','Endurance','false');
+INSERT INTO program(program_id,program_name,program_category,program_complete) VALUES(4,'Chest and Back','Strengthen','false');
+INSERT INTO program(program_id,program_name,program_category,program_complete) VALUES(5,'Legs and Glutes','Fat loss','false');
+INSERT INTO program(program_id,program_name,program_category,program_complete) VALUES(6,'Core Strength','Endurance','false');
 
-/*FOR THE WORKOUT*/
-INSERT INTO workout (workout_name,type,complete_workout)
-VALUES ('Popeye','Arms',false),
-       ('Want to have better posture?','Back',false),
-       ('These are chicken legs?','Legs',false);
 
-/*FOR THE EXERCISE*/
-INSERT INTO exercise (workout_id,exercise_name,description,target_muscle_group,repetitions,image,video,complete_exercise)
-VALUES (1,'Barbell Bicep Curl','','Biceps',15,'','https://www.youtube.com/watch?v=kwG2ipFRgfo&ab_channel=Howcast',false),
-       (1,'Dumbbell Preacher Curl','','Triceps',15,'','https://www.youtube.com/watch?v=WK5yZMlgMb4&ab_channel=Bodybuilding.com',false),
-       (2,'Deadlift','','Entire Posterior Chain',20,'','https://www.youtube.com/watch?v=ytGaGIn3SjE&ab_channel=JeremyEthier',false),
-       (2,'Bent-Over Row','','Total Back-Builder',20,'','https://www.youtube.com/watch?v=FWJR5Ve8bnQ&ab_channel=MaxEuceda',false),
-       (3,'Barbell Bulgarian Split Squat','Stand facing away from the bench, holding a barbell across your upper back. Have one leg resting on the bench behind you, laces down.','hamstrings',10,'','',false),
-       (3,'Seated Dumbbell Calf Raise','','soleus',10,'','',false),
-       (3,'Goblet Squat','','core and quadriceps',10,'','',false);
+INSERT INTO goal(goal_id,goal_name,goal_start_date,goal_end_date,goal_total_programs,goal_completed_programs,goal_complete) VALUES (1,'Get Fit','2023-12-31 23:59:59.999999','2023-01-01 00:00:00.000000',12,3,'false');
+INSERT INTO goal(goal_id,goal_name,goal_start_date,goal_end_date,goal_total_programs,goal_completed_programs,goal_complete) VALUES (2,'Build Muscle','2023-06-30 23:59:59.999999','2023-01-01 00:00:00.000000',8,1,'false');
+INSERT INTO goal(goal_id,goal_name,goal_start_date,goal_end_date,goal_total_programs,goal_completed_programs,goal_complete) VALUES (3,'Lose Weight','2023-12-31 23:59:59.999999','2023-07-01 00:00:00.000000',12,0,'false');
 
-/*FOR THE GOAL-PROGRAM*/
-INSERT INTO goal_program (goal_id,program_id)
-VALUES (1,2),(1,3),
-       (2,2),(2,3),
-       (3,1),(3,2),(3,3);
 
-/*FOR THE PROGRAM-WORKOUT*/
-INSERT INTO program_workout (program_id,workout_id)
-VALUES (1,1),(1,2),(1,3),
-       (2,1),(2,2),
-       (3,2),(3,3);
+INSERT INTO exercise(exercise_id,exercise_name,exercise_desc,exercise_tmg,exercise_repetitions,exercise_img,exercise_vid,exercise_complete,workout_id)VALUES (1,'Push-ups','Push-ups work your chest and arms.','Chest and Arms',10,'https://www.fitnesseducation.edu.au/wp-content/uploads/2017/03/Pushups.jpg','https://www.youtube.com/watch?v=IODxDxX7oi4','false',1);
+INSERT INTO exercise(exercise_id,exercise_name,exercise_desc,exercise_tmg,exercise_repetitions,exercise_img,exercise_vid,exercise_complete,workout_id)VALUES (2,'Pull-ups','Pull-ups work your back and arms.','Back and Arms',8,'https://www.fitnesseducation.edu.au/wp-content/uploads/2017/03/Pull-ups.jpg','https://www.youtube.com/watch?v=eGo4IYlbE5g','false',3);
+INSERT INTO exercise(exercise_id,exercise_name,exercise_desc,exercise_tmg,exercise_repetitions,exercise_img,exercise_vid,exercise_complete,workout_id)VALUES (3,'Squats','Squats work your legs and glutes.','Legs and Glutes',12,'https://www.fitnesseducation.edu.au/wp-content/uploads/2017/03/Squats.jpg','https://www.youtube.com/watch?v=mGvzVjuY8SY','false',4);
+INSERT INTO exercise(exercise_id,exercise_name,exercise_desc,exercise_tmg,exercise_repetitions,exercise_img,exercise_vid,exercise_complete,workout_id)VALUES (4,'Crunches','Crunches work your abs.','Abs',15,'https://www.fitnesseducation.edu.au/wp-content/uploads/2017/03/Crunches.jpg','https://www.youtube.com/watch?v=Xyd_fa5zoEU','false',6);
+
+INSERT INTO profile(profile_id,user_id,user_id,profile_age,profile_weight,profile_height,goal_id) VALUES (1,'1',25,90,190,1);
+INSERT INTO profile(profile_id,user_id,user_id,profile_age,profile_weight,profile_height,goal_id) VALUES (2,'2',28,80,180,1);
+INSERT INTO profile(profile_id,user_id,user_id,profile_age,profile_weight,profile_height,goal_id) VALUES (3,'3',30,75,175,2);
+INSERT INTO profile(profile_id,user_id,user_id,profile_age,profile_weight,profile_height,goal_id) VALUES (4,'4',35,85,180,3);
+
+INSERT INTO program_workout(program_id,workout_id) VALUES (1,1);
+INSERT INTO program_workout(program_id,workout_id) VALUES (1,2);
+INSERT INTO program_workout(program_id,workout_id) VALUES (2,2);
+INSERT INTO program_workout(program_id,workout_id) VALUES (3,2);
+INSERT INTO program_workout(program_id,workout_id) VALUES (3,3);
+INSERT INTO program_workout(program_id,workout_id) VALUES (4,2);
+INSERT INTO program_workout(program_id,workout_id) VALUES (4,1);
+
+INSERT INTO program_goal(program_id,goal_id) VALUES (1,1);
+
 
 
