@@ -56,6 +56,10 @@ profileRepository.deleteById(id);
         return profileRepository.findById(id).get().getGoal();
     }
 
+    @Override
+    public User getUser(Integer id) {
+        return profileRepository.findById(id).get().getUser();
+    }
 
 
 

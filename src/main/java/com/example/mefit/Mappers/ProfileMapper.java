@@ -1,9 +1,12 @@
 package com.example.mefit.Mappers;
 
+import com.example.mefit.Models.AppUser;
 import com.example.mefit.Models.DTO.ProfileDTO;
 import com.example.mefit.Models.Goal;
 import com.example.mefit.Models.Profile;
+import com.example.mefit.Models.User;
 import com.example.mefit.Services.Goal.GoalService;
+import com.example.mefit.Services.User.UserService;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -15,8 +18,11 @@ import java.util.Collection;
 public abstract class ProfileMapper {
     @Autowired
     protected GoalService goalService;
+    @Autowired
+    protected UserService userService;
 
     @Mapping(target = "goal", source = "goal.id")
+    @Mapping(target = "user", source = "user.id")
     public abstract ProfileDTO profileToProfileDTO(Profile profile);
     public abstract Collection<ProfileDTO> profileToProfileDTO(Collection<Profile> profile);
 
@@ -24,6 +30,14 @@ public abstract class ProfileMapper {
     Goal mapIdToGoal(int id) {
         return goalService.findById(id);
     }
+    @Named("userIdToUser")
+    User mapIdToUser(int id) {
+        return userService.findById(id);
+    }
     @Mapping(target = "goal", source = "goal", qualifiedByName="goalIdToGoal")
+    @Mapping(target = "user", source = "user", qualifiedByName="userIdToUser")
     public abstract Profile profileDtoToProfile(ProfileDTO profileDTO);
+
+
+
 }
