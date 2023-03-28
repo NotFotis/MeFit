@@ -23,7 +23,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping(path = "api/v1/profile")
-@CrossOrigin(origins = {"http://localhost:3000/", "https://my-fit-one.vercel.app/*", "https://my-fit-one.vercel.app/**","https://*.vercel.app/*"},
+@CrossOrigin(origins = {"http://localhost:3000/", "https://my-fit-one.vercel.app/*", "https://my-fit-one.vercel.app","https://*.vercel.app/*","*"},
         allowedHeaders = { "Origin", "Accept", "X-Requested-With", "Content-Type",
                 "Access-Control-Request-Method", "Access-Control-Request-Headers", "Authorization" },
         exposedHeaders = { "Access-Control-Allow-Origin",
