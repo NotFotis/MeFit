@@ -4,6 +4,7 @@ import com.example.mefit.Models.AppUser;
 import com.example.mefit.Models.DTO.ProfileDTO;
 import com.example.mefit.Models.Goal;
 import com.example.mefit.Models.Profile;
+import com.example.mefit.Models.User;
 import com.example.mefit.Services.Goal.GoalService;
 import com.example.mefit.Services.User.UserService;
 import org.mapstruct.Mapper;
@@ -21,8 +22,10 @@ public abstract class ProfileMapper {
     protected UserService userService;
 
 
+
     @Mapping(target = "goal", source = "goal.id")
     @Mapping(target = "user", source = "user.uid")
+
     public abstract ProfileDTO profileToProfileDTO(Profile profile);
     public abstract Collection<ProfileDTO> profileToProfileDTO(Collection<Profile> profile);
 
@@ -31,6 +34,7 @@ public abstract class ProfileMapper {
         return goalService.findById(id);
     }
 
+
     @Named("userIdToUser")
     AppUser mapIdToAppUser(String user_id) {
         return userService.findById(user_id);
@@ -38,5 +42,9 @@ public abstract class ProfileMapper {
 
     @Mapping(target = "goal", source = "goal", qualifiedByName="goalIdToGoal")
     @Mapping(target = "user", source = "user", qualifiedByName = "userIdToUser")
+
     public abstract Profile profileDtoToProfile(ProfileDTO profileDTO);
+
+
+
 }

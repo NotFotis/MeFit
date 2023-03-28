@@ -24,7 +24,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping(path = "api/v1/workout")
-@CrossOrigin(origins = {"http://localhost:3000/", ".vercel.app/"})
+@CrossOrigin(origins = {"http://localhost:3000", "*.vercel.app/*"})
 public class WorkoutController {
     private final WorkoutService workoutService;
     private final WorkoutMapper workoutMapper;

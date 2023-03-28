@@ -12,8 +12,14 @@ import lombok.Setter;
 public class AppUser {
     @Id
     private String uid;
-    private String bio;
-    private boolean complete;
+
+    private String username;
+    private String firstname;
+    private String lastname;
+    @JsonIgnore
+    @OneToOne
+    @JoinColumn(name="profile_id")
+    private Profile profile;
 
     @OneToOne(mappedBy = "user")
     private Profile profile;

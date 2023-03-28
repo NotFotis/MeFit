@@ -22,6 +22,7 @@ public class SecurityConfig {
                 //.csrf().disable()
                 // Enable security for http requests
                 .authorizeHttpRequests(authorize -> authorize
+
                      // FOR EXERCISES
                         //.requestMatchers(HttpMethod.GET,"/api/v1/exercise").hasAnyRole("Admin","Contributor","User")
                         //.requestMatchers(HttpMethod.GET,"/api/v1/exercise/*").hasAnyRole("Admin","Contributor","User")              
@@ -62,6 +63,7 @@ public class SecurityConfig {
                         //.requestMatchers(HttpMethod.GET,"/api/v1/profile/*").hasAnyRole("Admin","Contributor")
                         //.requestMatchers(HttpMethod.PATCH,"/api/v1/profile/*").hasAnyRole("Admin")
                         //.requestMatchers(HttpMethod.POST,"/api/v1/profile").hasAnyRole("Admin")
+
                         
                                        ///////////////EDW THELEI FTIACHSIMO///////////////
                         //.requestMatchers(HttpMethod.GET,"/api/v1/profile/profile_id").hasAnyRole("User")
@@ -70,6 +72,7 @@ public class SecurityConfig {
                         //.requestMatchers(HttpMethod.GET,"/api/v1/profile/profile_id/goal").hasAnyRole("User")
                                        ///////////////MEXRI EDW///////////////
                                                      
+
                         //.requestMatchers(HttpMethod.DELETE,"/api/v1/profile/*").hasAnyRole("Admin")
                         //.requestMatchers(HttpMethod.GET,"/api/v1/profile/*/goal").hasAnyRole("Admin")
                                               
@@ -80,6 +83,7 @@ public class SecurityConfig {
                         //.requestMatchers(HttpMethod.GET,"/api/v1/users/current").hasAnyRole("Admin")
                         //.requestMatchers(HttpMethod.GET,"/api/v1/users/register").hasAnyRole("Admin")
                      .requestMatchers("/api/v1/exercise").permitAll()
+
                         .requestMatchers("/api/v1/profile").permitAll()
                         .requestMatchers("/api/v1/workout").permitAll()
                         .requestMatchers("/api/v1/goal").permitAll()
@@ -87,7 +91,7 @@ public class SecurityConfig {
                         .requestMatchers("api/v1/users/info").hasRole("profile")
                         .requestMatchers("api/v1/users/principal").hasAuthority("profile")
                         // All remaining paths require authentication
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
                 .oauth2ResourceServer()
                 .jwt()

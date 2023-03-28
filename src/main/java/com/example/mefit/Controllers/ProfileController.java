@@ -23,7 +23,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping(path = "api/v1/profile")
-@CrossOrigin(origins = {"http://localhost:3000/", ".vercel.app/"})
+@CrossOrigin(origins = {"http://localhost:3000", "*.vercel.app/*"})
 public class ProfileController {
     private final ProfileService profileService;
     private final ProfileMapper profileMapper;
@@ -165,4 +165,31 @@ public class ProfileController {
     public ResponseEntity getGoal(@PathVariable int id) {
         return ResponseEntity.ok(profileService.getGoal(id));
     }
+
+
+    @GetMapping("{id}/user")
+    @Operation(summary = "Gets profile User")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Success",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Bad Request",
+                    content = @Content
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Not Found",
+                    content = @Content
+            )
+    })
+    public ResponseEntity getUser(@PathVariable int id) {
+        return ResponseEntity.ok(profileService.getUser(id));
+    }
+
+
+
 }

@@ -9,4 +9,6 @@ public interface ProfileService extends CrudService<Profile,Integer> {
     Goal getGoal(int Id);
 
 
+
+    User getUser(Integer id);
 }

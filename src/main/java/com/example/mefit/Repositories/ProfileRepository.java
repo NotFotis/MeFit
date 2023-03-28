@@ -10,4 +10,5 @@ public interface ProfileRepository extends JpaRepository<Profile,Integer> {
     Optional<Profile> findById(int primaryKey);
     void deleteById(int primaryKey);
     boolean existsById(int primaryKey);
+    Optional<Profile> findById(String primaryKey);
 }
