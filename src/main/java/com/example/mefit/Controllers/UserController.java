@@ -54,7 +54,7 @@ import java.util.Collection;
 
     @RestController
     @RequestMapping(path = "api/v1/user")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000", "*.vercel.app/*"})
     public class UserController {
 
         private final UserService userService;
