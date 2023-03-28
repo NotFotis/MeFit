@@ -21,6 +21,4 @@ public class AppUser {
     @JoinColumn(name="profile_id")
     private Profile profile;
 
-    @OneToOne(mappedBy = "user")
-    private Profile profile;
 }
