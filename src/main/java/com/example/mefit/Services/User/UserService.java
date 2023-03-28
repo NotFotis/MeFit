@@ -1,13 +1,15 @@
 package com.example.mefit.Services.User;
 
 import com.example.mefit.Models.AppUser;
-import com.example.mefit.Models.Profile;
-import com.example.mefit.Models.User;
-import com.example.mefit.Services.CrudService;
 
 import java.util.Collection;
 
-public interface UserService extends CrudService<User,Integer> {
+public interface UserService {
+    AppUser findById(String uid);
+    Collection<AppUser> findAll();
+    AppUser add(String uid);
+    AppUser add(AppUser user);
+    void update(AppUser user);
+    void delete(String uid);
 
-    Profile getProfile(Integer id);
 }

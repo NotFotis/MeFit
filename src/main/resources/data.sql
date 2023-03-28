@@ -38,6 +38,6 @@ INSERT INTO program_workout(program_id,workout_id) VALUES (4,2);
 INSERT INTO program_workout(program_id,workout_id) VALUES (4,1);
 
 INSERT INTO program_goal(program_id,goal_id) VALUES (1,1);
-INSERT INTO users(user_id, username, user_password, first_name, last_name, iscontributor, isadmin) VALUES (1,'Fotis',1234, 'Fotis','Staikos',true,true)
+
 
 

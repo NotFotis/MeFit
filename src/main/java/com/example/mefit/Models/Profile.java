@@ -28,9 +28,7 @@ public class Profile {
     @JoinColumn(name="goal_id")
     private Goal goal;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "profile")
-    private User user;
+
 
 
 
