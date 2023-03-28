@@ -23,7 +23,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping(path = "api/v1/profile")
-@CrossOrigin(origins = {"http://localhost:3000/", "*.vercel.app/*"})
+@CrossOrigin(origins = {"http://localhost:3000/", "https://my-fit-one.vercel.app/*", "https://my-fit-one.vercel.app/**"})
 public class ProfileController {
     private final ProfileService profileService;
     private final ProfileMapper profileMapper;
