@@ -18,7 +18,11 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
-@CrossOrigin(origins = {"http://localhost:3000/", "https://my-fit-one.vercel.app/*", "https://my-fit-one.vercel.app/**"})
+@CrossOrigin(origins = {"http://localhost:3000/", "https://my-fit-one.vercel.app/*", "https://my-fit-one.vercel.app/**","https://*.vercel.app/"},
+        allowedHeaders = { "Origin", "Accept", "X-Requested-With", "Content-Type",
+                "Access-Control-Request-Method", "Access-Control-Request-Headers", "Authorization" },
+        exposedHeaders = { "Access-Control-Allow-Origin",
+                "Access-Control-Allow-Credentials", "Authorization" })
 @RestController
 @RequestMapping(path = "api/v1/exercise")
 public class ExerciseController {
