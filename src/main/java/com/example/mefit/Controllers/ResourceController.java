@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v1/resources")
+@CrossOrigin(origins = {"http://localhost:3000/", ".vercel.app/"})
 public class ResourceController {
 
     @GetMapping("public")

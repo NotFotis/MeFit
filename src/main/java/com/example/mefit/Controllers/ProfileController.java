@@ -166,6 +166,7 @@ public class ProfileController {
         return ResponseEntity.ok(profileService.getGoal(id));
     }
 
+
     @GetMapping("{id}/user")
     @Operation(summary = "Gets profile User")
     @ApiResponses(value = {
@@ -188,6 +189,7 @@ public class ProfileController {
     public ResponseEntity getUser(@PathVariable int id) {
         return ResponseEntity.ok(profileService.getUser(id));
     }
+
 
 
 }

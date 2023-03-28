@@ -22,46 +22,48 @@ public class SecurityConfig {
                 //.csrf().disable()
                 // Enable security for http requests
                 .authorizeHttpRequests(authorize -> authorize
-                        // FOR EXERCISES
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/exercise").hasAnyRole("Administrator","Contributor","User")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/exercise/*").hasAnyRole("Administrator","Contributor","User")              
-                        //.requestMatchers(HttpMethod.POST,"/api/v1/exercise").hasAnyRole("Administrator","Contributor")
-                        //.requestMatchers(HttpMethod.PATCH,"/api/v1/exercise/*").hasAnyRole("Administrator","Contributor")               
-                        //.requestMatchers(HttpMethod.DELETE,"/api/v1/exercise/*").hasAnyRole("Administrator","Contributor")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/exercise/*/workout").hasAnyRole("Administrator","Contributor","User")    
+
+                     // FOR EXERCISES
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/exercise").hasAnyRole("Admin","Contributor","User")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/exercise/*").hasAnyRole("Admin","Contributor","User")              
+                        //.requestMatchers(HttpMethod.POST,"/api/v1/exercise").hasAnyRole("Admin","Contributor")
+                        //.requestMatchers(HttpMethod.PATCH,"/api/v1/exercise/*").hasAnyRole("Admin","Contributor")               
+                        //.requestMatchers(HttpMethod.DELETE,"/api/v1/exercise/*").hasAnyRole("Admin","Contributor")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/exercise/*/workout").hasAnyRole("Admin","Contributor","User")    
                                                  
                         // FOR WORKOUTS
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/workout").hasAnyRole("Administrator","Contributor","User")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/workout/*").hasAnyRole("Administrator","Contributor","User")              
-                        //.requestMatchers(HttpMethod.POST,"/api/v1/workout").hasAnyRole("Administrator","Contributor")
-                        //.requestMatchers(HttpMethod.PATCH,"/api/v1/workout/*").hasAnyRole("Administrator","Contributor")               
-                        //.requestMatchers(HttpMethod.DELETE,"/api/v1/workout/*").hasAnyRole("Administrator","Contributor")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/workout/*/exercise").hasAnyRole("Administrator","Contributor","User")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/workout/*/program").hasAnyRole("Administrator","Contributor","User")               
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/workout").hasAnyRole("Admin","Contributor","User")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/workout/*").hasAnyRole("Admin","Contributor","User")              
+                        //.requestMatchers(HttpMethod.POST,"/api/v1/workout").hasAnyRole("Admin","Contributor")
+                        //.requestMatchers(HttpMethod.PATCH,"/api/v1/workout/*").hasAnyRole("Admin","Contributor")               
+                        //.requestMatchers(HttpMethod.DELETE,"/api/v1/workout/*").hasAnyRole("Admin","Contributor")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/workout/*/exercise").hasAnyRole("Admin","Contributor","User")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/workout/*/program").hasAnyRole("Admin","Contributor","User")               
                                        
                         // FOR PROGRAMS
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/program").hasAnyRole("Administrator","Contributor","User")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/program/*").hasAnyRole("Administrator","Contributor","User")              
-                        //.requestMatchers(HttpMethod.POST,"/api/v1/program").hasAnyRole("Administrator","Contributor")
-                        //.requestMatchers(HttpMethod.PATCH,"/api/v1/program/*").hasAnyRole("Administrator","Contributor")               
-                        //.requestMatchers(HttpMethod.DELETE,"/api/v1/program/*").hasAnyRole("Administrator","Contributor")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/program/*/workout").hasAnyRole("Administrator","Contributor","User")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/program/*/goal").hasAnyRole("Administrator","Contributor","User")               
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/program").hasAnyRole("Admin","Contributor","User")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/program/*").hasAnyRole("Admin","Contributor","User")              
+                        //.requestMatchers(HttpMethod.POST,"/api/v1/program").hasAnyRole("Admin","Contributor")
+                        //.requestMatchers(HttpMethod.PATCH,"/api/v1/program/*").hasAnyRole("Admin","Contributor")               
+                        //.requestMatchers(HttpMethod.DELETE,"/api/v1/program/*").hasAnyRole("Admin","Contributor")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/program/*/workout").hasAnyRole("Admin","Contributor","User")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/program/*/goal").hasAnyRole("Admin","Contributor","User")               
                                        
                         // FOR GOALS
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/goal").hasAnyRole("Administrator","Contributor","User")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/goal/*").hasAnyRole("Administrator","Contributor","User")              
-                        //.requestMatchers(HttpMethod.POST,"/api/v1/goal").hasAnyRole("Administrator","Contributor")
-                        //.requestMatchers(HttpMethod.PATCH,"/api/v1/goal/*").hasAnyRole("Administrator","Contributor")               
-                        //.requestMatchers(HttpMethod.DELETE,"/api/v1/goal/*").hasAnyRole("Administrator","Contributor")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/goal/*/program").hasAnyRole("Administrator","Contributor","User")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/goal/*/profile").hasAnyRole("Administrator","Contributor")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/goal").hasAnyRole("Admin","Contributor","User")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/goal/*").hasAnyRole("Admin","Contributor","User")              
+                        //.requestMatchers(HttpMethod.POST,"/api/v1/goal").hasAnyRole("Admin","Contributor")
+                        //.requestMatchers(HttpMethod.PATCH,"/api/v1/goal/*").hasAnyRole("Admin","Contributor")               
+                        //.requestMatchers(HttpMethod.DELETE,"/api/v1/goal/*").hasAnyRole("Admin","Contributor")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/goal/*/program").hasAnyRole("Admin","Contributor","User")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/goal/*/profile").hasAnyRole("Admin","Contributor")
                                                   
                         // FOR PROFILES
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/profile").hasAnyRole("Administrator","Contributor")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/profile/*").hasAnyRole("Administrator","Contributor")
-                        //.requestMatchers(HttpMethod.PATCH,"/api/v1/profile/*").hasAnyRole("Administrator")
-                        //.requestMatchers(HttpMethod.POST,"/api/v1/profile").hasAnyRole("Administrator")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/profile").hasAnyRole("Admin","Contributor")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/profile/*").hasAnyRole("Admin","Contributor")
+                        //.requestMatchers(HttpMethod.PATCH,"/api/v1/profile/*").hasAnyRole("Admin")
+                        //.requestMatchers(HttpMethod.POST,"/api/v1/profile").hasAnyRole("Admin")
+
                         
                                        ///////////////EDW THELEI FTIACHSIMO///////////////
                         //.requestMatchers(HttpMethod.GET,"/api/v1/profile/profile_id").hasAnyRole("User")
@@ -70,18 +72,18 @@ public class SecurityConfig {
                         //.requestMatchers(HttpMethod.GET,"/api/v1/profile/profile_id/goal").hasAnyRole("User")
                                        ///////////////MEXRI EDW///////////////
                                                      
-                        //.requestMatchers(HttpMethod.DELETE,"/api/v1/profile/*").hasAnyRole("Administrator")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/profile/*/goal").hasAnyRole("Administrator")
+
+                        //.requestMatchers(HttpMethod.DELETE,"/api/v1/profile/*").hasAnyRole("Admin")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/profile/*/goal").hasAnyRole("Admin")
                                               
                         // FOR USERS
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/users").hasAnyRole("Administrator")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/users/info").hasAnyRole("Administrator")               
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/users/principal").hasAnyRole("Administrator")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/users/current").hasAnyRole("Administrator")
-                        //.requestMatchers(HttpMethod.GET,"/api/v1/users/register").hasAnyRole("Administrator")               
-                                       
-                        .requestMatchers("/api/v1/exercise").permitAll()
-                        .requestMatchers("/api/v1/exercise/**").permitAll()
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/users").hasAnyRole("Admin")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/users/info").hasAnyRole("Admin")               
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/users/principal").hasAnyRole("Admin")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/users/current").hasAnyRole("Admin")
+                        //.requestMatchers(HttpMethod.GET,"/api/v1/users/register").hasAnyRole("Admin")
+                     .requestMatchers("/api/v1/exercise").permitAll()
+
                         .requestMatchers("/api/v1/profile").permitAll()
                         .requestMatchers("/api/v1/workout").permitAll()
                         .requestMatchers("/api/v1/goal").permitAll()

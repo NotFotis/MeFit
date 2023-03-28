@@ -21,8 +21,11 @@ public abstract class ProfileMapper {
     @Autowired
     protected UserService userService;
 
+
+
     @Mapping(target = "goal", source = "goal.id")
-    @Mapping(target = "user", source = "user.id")
+    @Mapping(target = "user", source = "user.uid")
+
     public abstract ProfileDTO profileToProfileDTO(Profile profile);
     public abstract Collection<ProfileDTO> profileToProfileDTO(Collection<Profile> profile);
 
@@ -30,12 +33,16 @@ public abstract class ProfileMapper {
     Goal mapIdToGoal(int id) {
         return goalService.findById(id);
     }
+
+
     @Named("userIdToUser")
-    User mapIdToUser(int id) {
-        return userService.findById(id);
+    AppUser mapIdToAppUser(String user_id) {
+        return userService.findById(user_id);
     }
+
     @Mapping(target = "goal", source = "goal", qualifiedByName="goalIdToGoal")
-    @Mapping(target = "user", source = "user", qualifiedByName="userIdToUser")
+    @Mapping(target = "user", source = "user", qualifiedByName = "userIdToUser")
+
     public abstract Profile profileDtoToProfile(ProfileDTO profileDTO);
 
 

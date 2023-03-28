@@ -19,6 +19,12 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 
 
+@RestController
+@RequestMapping("api/v1/users")
+@CrossOrigin(origins = {"http://localhost:3000", "*.vercel.app/*"})
+public class UserController {
+
+
 //    @GetMapping("info")
 //    public ResponseEntity getLoggedInUserInfo(@AuthenticationPrincipal Jwt principal) {
 //        Map<String, String> map = new HashMap<>();
