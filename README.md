@@ -1,5 +1,8 @@
 # MeFit
 
+Mefit is an app that helps you with your daily exercise. In this repository you will find the api that brings you the exercises.
+For more information: <a href="https://github.com/NotFotis/MeFit/wiki/API-Documentation">API Documentation</a>
+
 ## Technologies Used
 Spring Boot 2.5.4
 Gradle 7.3.3
