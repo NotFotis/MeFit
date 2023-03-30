@@ -28,12 +28,12 @@ Test the application by sending requests to http://localhost:8080.
 Features
 This application provides the following REST API endpoints:
 
-/users: CRUD operations for managing users
-/profile: CRUD operations for managing profiles
-/goal: CRUD operations for managing goals
-/program: CRUD operations for managing programs
-/workout: CRUD operations for managing workouts
-/exercise: CRUD operations for managing exercises
+/users: CRUD operations for managing users \n
+/profile: CRUD operations for managing profiles \n
+/goal: CRUD operations for managing goals \n
+/program: CRUD operations for managing programs \n
+/workout: CRUD operations for managing workouts \n
+/exercise: CRUD operations for managing exercises \n
 It also implements Spring Security and OAuth2 with Keycloak for authentication and authorization.
 
 The application follows a standard Spring Boot structure, with the following packages:
