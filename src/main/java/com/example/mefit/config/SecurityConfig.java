@@ -29,6 +29,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/program").permitAll()
                         .requestMatchers("api/v1/users/info").hasRole("profile")
                         .requestMatchers("api/v1/users/principal").hasAuthority("profile")
+                        .requestMatchers("swagger-ui", "/swagger-ui/*", "/swagger-ui/**").permitAll()
                         // All remaining paths require authentication
                         .anyRequest().authenticated()
                 )
