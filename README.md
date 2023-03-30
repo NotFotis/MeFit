@@ -2,7 +2,8 @@
 
 Mefit is an app that helps you with your daily exercise. In this repository you will find the api that brings you the programs, workouts and of course the exercises.
 For more information: <a href="https://github.com/NotFotis/MeFit/wiki/API-Documentation">API Documentation</a> <br />
-App is deployed with railway at: https://mefit-production.up.railway.app/api/v1/ (Add endpoint after /)
+App is deployed with railway at: https://mefit-production.up.railway.app/api/v1/ (Add endpoint after /) <br />
+App's frontend is at https://github.com/ZiogasThlem/my-fit
 
 ## Technologies Used <br />
 Spring Boot 2.5.4 <br />
